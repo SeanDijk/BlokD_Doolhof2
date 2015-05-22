@@ -22,25 +22,33 @@ public class Speler extends JComponent{
     public void paintComponent(Graphics g)
     {
             g.setColor(Color.green);            
-            System.out.println("LOL");
+            
             g.fillRect(0, 0, this.getWidth(), this.getWidth());     
      
     }
-    private void moveUp()
+    public void moveUp()
     {
-        
+       huidigveld=getHuidigVeld();
+       setHuidigVeld(huidigveld.getBuurBoven());
+       huidigveld.repaint();
     }
     public void moveRight()
     {
-            
+       huidigveld=getHuidigVeld();
+       setHuidigVeld(huidigveld.getBuurRechts());
+       huidigveld.repaint();
     }
-    private void moveDown()
+    public void moveDown()
     {
-        
+       huidigveld=getHuidigVeld();
+       setHuidigVeld(huidigveld.getBuurOnder());
+       huidigveld.repaint();
     }
-    private void moveLeft()
+    public void moveLeft()
     {
-        
+       huidigveld=getHuidigVeld();
+       setHuidigVeld(huidigveld.getBuurLinks());
+       huidigveld.repaint();
     }
     private Veld getHuidigVeld()
     {
@@ -51,6 +59,8 @@ public class Speler extends JComponent{
             {
                if(veld.speler != null)
                {
+                   System.out.println("getHuidigVeld()"+veld);
+
                    return veld;
                }
             }
@@ -62,6 +72,13 @@ public class Speler extends JComponent{
     {
         huidigveld.speler =null;
         huidigveld = getHuidigVeld();
+        huidigveld.speler = this;
+    }
+        private void setHuidigVeld(Veld veld)
+    {
+        huidigveld.speler =null;
+        huidigveld.repaint();
+        huidigveld = veld;
         huidigveld.speler = this;
     }
 }

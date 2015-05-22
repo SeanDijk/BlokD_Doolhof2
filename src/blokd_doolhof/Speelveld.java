@@ -89,9 +89,24 @@ public class Speelveld extends JFrame{
         public void keyPressed(KeyEvent e) {
             String key = Character.toString(e.getKeyChar());
             System.out.println(key);
-            if("r".equals(key))
+            if("w".equals(key))
             {
-                System.out.println("r");
+                System.out.println("w");
+                speler.moveUp();
+            }
+            if("a".equals(key))
+            {
+                System.out.println("a");
+                speler.moveLeft();
+            }
+            if("s".equals(key))
+            {
+                System.out.println("s");
+                speler.moveDown();
+            }
+            if("d".equals(key))
+            {
+                System.out.println("d");
                 speler.moveRight();
             }
         }
