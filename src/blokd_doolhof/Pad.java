@@ -5,10 +5,22 @@
  */
 package blokd_doolhof;
 
+import java.awt.Color;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.Border;
+
 /**
  *
  * @author Sean
  */
-public class Pad {
+public class Pad extends Veld{
+    
+    public Pad()
+    {
+        kleur = Color.blue;
+        Border border = new BevelBorder(1);
+        setBackground(Color.blue);
+        setBorder(border);
+    }
     
 }

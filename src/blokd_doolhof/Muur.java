@@ -5,10 +5,25 @@
  */
 package blokd_doolhof;
 
+import java.awt.Color;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.Border;
+
 /**
  *
  * @author Sean
  */
-public class Muur {
+public class Muur extends Veld{
     
+    public Muur()
+    {
+        kleur = Color.red;
+        Border border = new BevelBorder(1);
+        setBackground(Color.red);
+        setBorder(border);
+        
+        
+    }
+    
+
 }
