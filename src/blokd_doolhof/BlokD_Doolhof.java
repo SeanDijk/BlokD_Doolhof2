@@ -16,8 +16,9 @@ public class BlokD_Doolhof {
     /**
      * @param args the command line arguments
      */
+    static Speelveld frame;
     public static void main(String[] args) {
-        Speelveld frame = new Speelveld();
+        frame = new Speelveld();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(400, 400);
         frame.setVisible(true);

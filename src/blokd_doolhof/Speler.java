@@ -21,35 +21,28 @@ public class Speler extends JComponent{
     @Override
     public void paintComponent(Graphics g)
     {
-            g.setColor(Color.green);            
-            
+            g.setColor(Color.green);           
             g.fillRect(0, 0, this.getWidth(), this.getWidth());     
      
     }
-    public void moveUp()
+    
+    public void move(String direction)
     {
-       huidigveld=getHuidigVeld();
-       setHuidigVeld(huidigveld.getBuurBoven());
-       huidigveld.repaint();
+        huidigveld=getHuidigVeld();
+        
+        if("left".equals(direction))
+            setHuidigVeld(huidigveld.getBuurLinks());
+        if("right".equals(direction))
+            setHuidigVeld(huidigveld.getBuurRechts());
+        if("up".equals(direction)) 
+            setHuidigVeld(huidigveld.getBuurBoven());        
+        if("down".equals(direction))
+            setHuidigVeld(huidigveld.getBuurOnder());        
+        
+        huidigveld.repaint();
+        spelObjectAction();
     }
-    public void moveRight()
-    {
-       huidigveld=getHuidigVeld();
-       setHuidigVeld(huidigveld.getBuurRechts());
-       huidigveld.repaint();
-    }
-    public void moveDown()
-    {
-       huidigveld=getHuidigVeld();
-       setHuidigVeld(huidigveld.getBuurOnder());
-       huidigveld.repaint();
-    }
-    public void moveLeft()
-    {
-       huidigveld=getHuidigVeld();
-       setHuidigVeld(huidigveld.getBuurLinks());
-       huidigveld.repaint();
-    }
+
     private Veld getHuidigVeld()
     {
          for(Veld[] rijen: velden)
@@ -74,11 +67,27 @@ public class Speler extends JComponent{
         huidigveld = getHuidigVeld();
         huidigveld.speler = this;
     }
-        private void setHuidigVeld(Veld veld)
+    private void setHuidigVeld(Veld veld)
     {
         huidigveld.speler =null;
         huidigveld.repaint();
         huidigveld = veld;
         huidigveld.speler = this;
     }
+    
+    private void checkVriend()
+    {
+        if(huidigveld.spelObject != null && huidigveld.spelObject instanceof Vriend)
+        {
+            System.out.println("gewonnen!");
+        }
+    }
+    private void spelObjectAction()
+    {
+        if(huidigveld.spelObject != null)
+        {
+            huidigveld.spelObject.doAction();
+        }
+    }
+    
 }

@@ -18,7 +18,9 @@ import javax.swing.JPanel;
 public class Speelveld extends JFrame{
     static Veld[][] velden;
     Veld startPositie;
+    Veld eindPositie;
     Speler speler = new Speler();
+    Vriend vriend = new Vriend();
 
     JPanel mazePannel= new JPanel();
     public Speelveld()
@@ -77,6 +79,9 @@ public class Speelveld extends JFrame{
         }
         startPositie = velden[1][1];
         startPositie.speler= speler;
+        eindPositie = velden[1][8];
+        eindPositie.spelObject = vriend;
+        
         
     }
 
@@ -91,23 +96,19 @@ public class Speelveld extends JFrame{
             System.out.println(key);
             if("w".equals(key))
             {
-                System.out.println("w");
-                speler.moveUp();
+                speler.move("up");
             }
             if("a".equals(key))
             {
-                System.out.println("a");
-                speler.moveLeft();
+                speler.move("left");
             }
             if("s".equals(key))
             {
-                System.out.println("s");
-                speler.moveDown();
+                speler.move("down");
             }
             if("d".equals(key))
             {
-                System.out.println("d");
-                speler.moveRight();
+                speler.move("right");
             }
         }
 

@@ -5,10 +5,30 @@
  */
 package blokd_doolhof;
 
+import java.awt.Color;
+import java.awt.Graphics;
+import javax.swing.JComponent;
+
 /**
  *
  * @author Sean
  */
-public class SpelObject {
+public abstract class SpelObject extends JComponent{
+    
+    Color kleur;
+    
+    
+    
+    @Override
+    public void paintComponent(Graphics g)
+    {
+        g.setColor(kleur);    
+        g.fillRect(0, 0, this.getWidth(), this.getWidth()); 
+    }
+    
+    public void doAction()
+    {
+        
+    }
     
 }

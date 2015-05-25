@@ -18,6 +18,7 @@ import javax.swing.border.Border;
 public abstract class Veld extends JComponent{
     Color kleur;
     Speler speler;
+    SpelObject spelObject;
     int coordsX;
     int coordsY;
     public Veld()
@@ -32,11 +33,16 @@ public abstract class Veld extends JComponent{
     {
             g.setColor(kleur);            
 
+            if(spelObject != null)
+            {
+                spelObject.paintComponent(g);
+            }
             if(speler != null)
             {
                 speler.paintComponent(g);
                 //getBuurRechts().kleur =Color.BLACK;
             }
+
 
             g.fillRect(0, 0, this.getWidth(), this.getWidth());  
     }
