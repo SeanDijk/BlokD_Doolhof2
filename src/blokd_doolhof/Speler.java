@@ -29,16 +29,19 @@ public class Speler extends JComponent{
     public void move(String direction)
     {
         huidigveld=getHuidigVeld();
+        Veld nieuwVeld = null;
         
         if("left".equals(direction))
-            setHuidigVeld(huidigveld.getBuur("left"));
+            nieuwVeld = huidigveld.getBuur("left");
         if("right".equals(direction))
-            setHuidigVeld(huidigveld.getBuur("right"));
+            nieuwVeld = huidigveld.getBuur("right");
         if("up".equals(direction)) 
-            setHuidigVeld(huidigveld.getBuur("up"));        
+            nieuwVeld = huidigveld.getBuur("up");        
         if("down".equals(direction))
-            setHuidigVeld(huidigveld.getBuur("down"));        
+            nieuwVeld = huidigveld.getBuur("down");      
         
+        if(nieuwVeld.isWall() != true)
+            setHuidigVeld(nieuwVeld);
         huidigveld.repaint();
         spelObjectAction();
     }
