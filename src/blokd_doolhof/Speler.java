@@ -31,13 +31,13 @@ public class Speler extends JComponent{
         huidigveld=getHuidigVeld();
         
         if("left".equals(direction))
-            setHuidigVeld(huidigveld.getBuurLinks());
+            setHuidigVeld(huidigveld.getBuur("left"));
         if("right".equals(direction))
-            setHuidigVeld(huidigveld.getBuurRechts());
+            setHuidigVeld(huidigveld.getBuur("right"));
         if("up".equals(direction)) 
-            setHuidigVeld(huidigveld.getBuurBoven());        
+            setHuidigVeld(huidigveld.getBuur("up"));        
         if("down".equals(direction))
-            setHuidigVeld(huidigveld.getBuurOnder());        
+            setHuidigVeld(huidigveld.getBuur("down"));        
         
         huidigveld.repaint();
         spelObjectAction();
@@ -75,13 +75,6 @@ public class Speler extends JComponent{
         huidigveld.speler = this;
     }
     
-    private void checkVriend()
-    {
-        if(huidigveld.spelObject != null && huidigveld.spelObject instanceof Vriend)
-        {
-            System.out.println("gewonnen!");
-        }
-    }
     private void spelObjectAction()
     {
         if(huidigveld.spelObject != null)

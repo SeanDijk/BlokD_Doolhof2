@@ -12,7 +12,7 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.Border;
 
 /**
- *
+ * Abstracte superklasse voor velden.
  * @author Sean
  */
 public abstract class Veld extends JComponent{
@@ -32,45 +32,43 @@ public abstract class Veld extends JComponent{
     public void paintComponent(Graphics g)
     {
             g.setColor(kleur);            
-
+            
+            //Tekent het spelobject op het veld
             if(spelObject != null)
             {
                 spelObject.paintComponent(g);
             }
+            //Tekent de speler op het veld
             if(speler != null)
             {
-                speler.paintComponent(g);
-                //getBuurRechts().kleur =Color.BLACK;
+                speler.paintComponent(g);                
             }
-
-
+            //Tekent het veld
             g.fillRect(0, 0, this.getWidth(), this.getWidth());  
     }
     
-    
-    
-    public Veld getBuurRechts()
-    { 
-        Veld veld = Speelveld.velden[coordsY][coordsX+1];
-        System.out.println("getBuurRechts()"+veld);
-        return veld;
-    }
-    public Veld getBuurLinks()
+    //
+    public Veld getBuur(String direction)
     {
-        Veld veld = Speelveld.velden[coordsY][coordsX-1];
-        return veld;
-    }
-    public Veld getBuurBoven()
-    {
-        Veld veld = Speelveld.velden[coordsY-1][coordsX];
-        return veld;
-    }
-    public Veld getBuurOnder()
-    {
-        Veld veld = Speelveld.velden[coordsY+1][coordsX];
+        Veld veld = null;
+        if("left".equals(direction))
+            veld = Speelveld.velden[coordsY][coordsX-1];
+        if("right".equals(direction))
+            veld = Speelveld.velden[coordsY][coordsX+1];
+        if("up".equals(direction))
+            veld = Speelveld.velden[coordsY-1][coordsX];
+        if("down".equals(direction)) 
+            veld = Speelveld.velden[coordsY+1][coordsX];
         return veld;
     }
 
+
+    
+    private boolean checkWall()
+    {
+        return true;
+    }
+    
     @Override
     public String toString()
     {
