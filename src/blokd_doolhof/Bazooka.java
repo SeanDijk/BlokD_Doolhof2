@@ -9,6 +9,10 @@ package blokd_doolhof;
  *
  * @author Sean
  */
-public class Bazooka {
-    
+public class Bazooka extends SpelObject implements Pickupable{
+    @Override
+    public void doAction()
+    {
+        
+    }
 }

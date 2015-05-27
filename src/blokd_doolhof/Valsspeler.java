@@ -9,6 +9,13 @@ package blokd_doolhof;
  *
  * @author Sean
  */
-public class Valsspeler {
+public class Valsspeler extends SpelObject{
+    int aantalStappen;
+    
+    @Override
+    public void doAction()
+    {
+        
+    }
     
 }

@@ -8,6 +8,8 @@ package blokd_doolhof;
 import static blokd_doolhof.Speelveld.velden;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import javax.swing.JComponent;
 
 /**
@@ -16,8 +18,13 @@ import javax.swing.JComponent;
  */
 public class Speler extends JComponent{
     Veld huidigveld;
+    int aantalStappen=0;
+    Pickupable pickup;
     
-    
+    public Speler()
+    {
+        addKeyListener(key);
+    }
     @Override
     public void paintComponent(Graphics g)
     {
@@ -41,8 +48,11 @@ public class Speler extends JComponent{
             nieuwVeld = huidigveld.getBuur("down");      
         
         if(nieuwVeld.isWall() != true)
+        {
             setHuidigVeld(nieuwVeld);
-        huidigveld.repaint();
+            aantalStappen++;
+            huidigveld.repaint();
+        }
         spelObjectAction();
     }
 
@@ -86,4 +96,35 @@ public class Speler extends JComponent{
         }
     }
     
+    
+    KeyListener key = new KeyListener() {
+
+        @Override
+        public void keyTyped(KeyEvent e) {}
+
+        @Override
+        public void keyPressed(KeyEvent e) {
+            String key = Character.toString(e.getKeyChar());
+            System.out.println(key);
+            if("w".equals(key))
+            {
+                move("up");
+            }
+            if("a".equals(key))
+            {
+                move("left");
+            }
+            if("s".equals(key))
+            {
+                move("down");
+            }
+            if("d".equals(key))
+            {
+                move("right");
+            }
+        }
+
+        @Override
+        public void keyReleased(KeyEvent e) {}
+    };
 }

@@ -9,6 +9,11 @@ package blokd_doolhof;
  *
  * @author Sean
  */
-public class Helper {
+public class Helper extends SpelObject{
     
+    @Override
+    public void doAction()
+    {
+        
+    }
 }
