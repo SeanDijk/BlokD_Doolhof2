@@ -1,40 +1,39 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
+ * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
 package blokd_doolhof;
 
+import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 /**
  *
  * @author Sean
  */
-public class Speelveld extends JFrame{
-    static Veld[][] velden;
+public class Speelveld extends JPanel{
+     static Veld[][] velden;
     Veld startPositie;
     Veld eindPositie;
     Speler speler = new Speler();
     Vriend vriend = new Vriend();
 
     JPanel mazePannel= new JPanel();
+    JPanel buttonsPanel = new JPanel();
     public Speelveld()
     {
-        //makeMazePannel(20 , 20);
-        makeLevel1();
-        add(mazePannel);
         addKeyListener(key);
-    }
-
-    public void makeLevel1()
-    {
-        mazePannel.setLayout(new GridLayout(10,10));
+        loadLevel1();
+        //setF
+        System.out.println(isFocusable());
         
+    }
+    public void loadLevel1()
+    {
+        setLayout(new GridLayout(10,10));
         Veld[] paden = new Pad[100];
         for (int i = 0; i < 100; i++) {
             Pad object = new Pad();
@@ -72,7 +71,7 @@ public class Speelveld extends JFrame{
             {
                 kolommen.coordsY = coordY;
                 kolommen.coordsX = coordsX;
-                mazePannel.add(kolommen);
+                add(kolommen);
                 coordsX++;
             }
             coordY++;
@@ -84,8 +83,9 @@ public class Speelveld extends JFrame{
         
         
     }
-
-    KeyListener key = new KeyListener() {
+    
+    
+       KeyListener key = new KeyListener() {
 
         @Override
         public void keyTyped(KeyEvent e) {}
@@ -115,5 +115,6 @@ public class Speelveld extends JFrame{
         @Override
         public void keyReleased(KeyEvent e) {}
     };
+    
     
 }

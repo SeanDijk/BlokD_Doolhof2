@@ -38,13 +38,16 @@ public abstract class Veld extends JComponent{
             {
                 spelObject.paintComponent(g);
             }
+            
+            g.fillRect(0, 0, this.getWidth(), this.getHeight()); 
+            
             //Tekent de speler op het veld
             if(speler != null)
             {
                 speler.paintComponent(g);                
             }
             //Tekent het veld
-            g.fillRect(0, 0, this.getWidth(), this.getWidth());  
+             
     }
     
     //

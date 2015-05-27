@@ -29,7 +29,7 @@ public class Speler extends JComponent{
     public void paintComponent(Graphics g)
     {
             g.setColor(Color.green);           
-            g.fillRect(0, 0, this.getWidth(), this.getWidth());     
+            g.fillOval(0, 0, getHuidigVeld().getWidth(), getHuidigVeld().getHeight());     
      
     }
     
