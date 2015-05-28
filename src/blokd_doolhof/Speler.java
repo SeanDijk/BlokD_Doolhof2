@@ -47,7 +47,7 @@ public class Speler extends JComponent{
         if("down".equals(direction))
             nieuwVeld = huidigveld.getBuur("down");      
         
-        if(nieuwVeld.isWall() != true)
+        if(nieuwVeld.isWalkable() == true)
         {
             setHuidigVeld(nieuwVeld);
             aantalStappen++;

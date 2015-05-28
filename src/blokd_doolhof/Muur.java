@@ -24,6 +24,11 @@ public class Muur extends Veld{
         
         
     }
+    @Override
+        public boolean isWalkable()
+    {
+        return false;
+    }
     
 
 }

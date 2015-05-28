@@ -67,12 +67,9 @@ public abstract class Veld extends JComponent{
 
 
     
-    public boolean isWall()
+    public boolean isWalkable()
     {
-        if(this instanceof Muur)
-            return true;
-        else
-            return false;
+        return true;
     }
     
     @Override
