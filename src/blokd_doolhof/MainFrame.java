@@ -40,9 +40,9 @@ public class MainFrame extends JFrame{
     {
         Border b = new BevelBorder(WIDTH);
         
-        buttonsPanel.setLayout(new GridLayout(1,1));
-        JButton pause = new JButton("Pause");
-        buttonsPanel.add(pause);
+        //buttonsPanel.setLayout(new GridLayout(1,1));
+        JButton restart = new JButton("Restart");
+        buttonsPanel.add(restart);
         buttonsPanel.setBorder(b);
         add(buttonsPanel, BorderLayout.SOUTH);
     }

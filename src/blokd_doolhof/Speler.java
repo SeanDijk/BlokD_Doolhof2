@@ -52,6 +52,11 @@ public class Speler extends JComponent{
             setHuidigVeld(nieuwVeld);
             aantalStappen++;
             huidigveld.repaint();
+            System.out.println("Moved to: "+huidigveld);
+            System.out.println("Aantal stappen: " + aantalStappen);
+        }
+        else{
+            System.out.println("Cant move there, it's a wall! ");
         }
         spelObjectAction();
     }
@@ -65,7 +70,6 @@ public class Speler extends JComponent{
             {
                if(veld.speler != null)
                {
-                   System.out.println("getHuidigVeld()"+veld);
 
                    return veld;
                }
