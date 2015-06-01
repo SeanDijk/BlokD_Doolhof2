@@ -18,7 +18,7 @@ import javax.swing.JComponent;
  */
 public class Speler extends JComponent{
     Veld huidigveld;
-    int aantalStappen=0;
+    static int aantalStappen=0;
     Pickupable pickup;
     
     public Speler()
@@ -54,11 +54,13 @@ public class Speler extends JComponent{
             huidigveld.repaint();
             System.out.println("Moved to: "+huidigveld);
             System.out.println("Aantal stappen: " + aantalStappen);
+            spelObjectAction();
+
         }
         else{
             System.out.println("Cant move there, it's a wall! ");
         }
-        spelObjectAction();
+        
     }
 
     private Veld getHuidigVeld()

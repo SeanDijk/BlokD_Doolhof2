@@ -16,7 +16,7 @@ import javax.swing.JComponent;
 public abstract class SpelObject extends JComponent{
     
     Color kleur;
-    
+    boolean disabled=false;
     
     
     @Override
@@ -30,5 +30,6 @@ public abstract class SpelObject extends JComponent{
     {
         
     }
+
     
 }

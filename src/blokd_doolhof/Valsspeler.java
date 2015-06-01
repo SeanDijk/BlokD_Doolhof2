@@ -10,12 +10,23 @@ package blokd_doolhof;
  * @author Sean
  */
 public class Valsspeler extends SpelObject{
-    int aantalStappen;
+    int aantal;
     
-    @Override
-    public void doAction()
+    
+    public Valsspeler(int aantal)
     {
-        
+        this.aantal = aantal;
+    }
+    @Override
+    public void doAction() //Terugdraaien Stappen
+    {
+        if(disabled == false)
+        {
+            Speler.aantalStappen-= aantal;
+            System.out.println(Speler.aantalStappen);
+            disabled = true;
+        }
+
     }
     
 }

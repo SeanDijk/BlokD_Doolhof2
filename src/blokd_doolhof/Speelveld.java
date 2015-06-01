@@ -50,12 +50,12 @@ public class Speelveld extends JPanel{
     public void loadLevel1()
     {
         setLayout(new GridLayout(10,10));
-        maakPaden(44);
-        maakMuren(58);
+        maakPaden(43);
+        maakMuren(57);
 
         
-        int i =1;
-        int y = 1;        
+        int i =0;
+        int y = 0;        
         
         Veld[] rij1 = {muren[i++], muren[i++], muren[i++], muren[i++], muren[i++], muren[i++], muren[i++], muren[i++], muren[i++], muren[i++]};
         Veld[] rij2 = {muren[i++], paden[y++], muren[i++], paden[y++], paden[y++],paden[y++], muren[i++], paden[y++],paden[y++], muren[i++]};
@@ -67,7 +67,7 @@ public class Speelveld extends JPanel{
         Veld[] rij8 = {muren[i++], paden[y++], muren[i++] ,paden[y++],  paden[y++], paden[y++], paden[y++], paden[y++], paden[y++], muren[i++]};
         Veld[] rij9 = {muren[i++], paden[y++],paden[y++],paden[y++],muren[i++],muren[i++], paden[y++],paden[y++],paden[y++],muren[i++]};
         Veld[] rij10 = {muren[i++], muren[i++], muren[i++], muren[i++], muren[i++], muren[i++], muren[i++], muren[i++], muren[i++], muren[i++]};
-        System.out.println("Aantal muren: " + (i-1) + " Aantal paden: " + (y-1));
+        System.out.println("Aantal muren: " + (i) + " Aantal paden: " + (y));
         velden = new Veld[][]{rij1, rij2, rij3, rij4, rij5, rij6, rij7, rij8, rij9, rij10};
         
         int coordY=0;
@@ -84,10 +84,14 @@ public class Speelveld extends JPanel{
             }
             coordY++;
         }
+        
+        
         startPositie = velden[1][1];
         startPositie.speler= speler;
         eindPositie = velden[1][8];
         eindPositie.spelObject = vriend;
+        velden[2][1].spelObject = new Valsspeler(20);
+        
     }
     
     
