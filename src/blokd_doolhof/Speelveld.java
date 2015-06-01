@@ -5,6 +5,7 @@
 package blokd_doolhof;
 
 import java.awt.BorderLayout;
+import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -15,39 +16,46 @@ import javax.swing.JPanel;
  * @author Sean
  */
 public class Speelveld extends JPanel{
-     static Veld[][] velden;
+    Veld[] paden;
+    Veld[] muren;
+    
+    static Veld[][] velden;
     Veld startPositie;
     Veld eindPositie;
     Speler speler = new Speler();
     Vriend vriend = new Vriend();
-
-    JPanel mazePannel= new JPanel();
-    JPanel buttonsPanel = new JPanel();
+    
     public Speelveld()
     {
         addKeyListener(key);
         loadLevel1();
-        //setF
-        System.out.println(isFocusable());
         
+    }
+    private void maakPaden(int aantal)
+    {
+        paden = new Pad[aantal];
+        for (int i = 0; i < aantal; i++) {
+            Pad object = new Pad();
+            paden[i] = object;            
+        }
+    }
+    private void maakMuren(int aantal )
+    {
+        muren = new Muur[aantal];
+        for (int i = 0; i < aantal; i++) {
+            Muur object = new Muur();
+            muren[i] = object;            
+        }
     }
     public void loadLevel1()
     {
         setLayout(new GridLayout(10,10));
-        Veld[] paden = new Pad[100];
-        for (int i = 0; i < 100; i++) {
-            Pad object = new Pad();
-            paden[i] = object;            
-        }
-        Veld[] muren = new Muur[100];
-        for (int i = 0; i < 100; i++) {
-            Muur object = new Muur();
-            muren[i] = object;            
-        }
+        maakPaden(44);
+        maakMuren(58);
+
         
         int i =1;
-        int y = 1;
-        
+        int y = 1;        
         
         Veld[] rij1 = {muren[i++], muren[i++], muren[i++], muren[i++], muren[i++], muren[i++], muren[i++], muren[i++], muren[i++], muren[i++]};
         Veld[] rij2 = {muren[i++], paden[y++], muren[i++], paden[y++], paden[y++],paden[y++], muren[i++], paden[y++],paden[y++], muren[i++]};
@@ -59,7 +67,7 @@ public class Speelveld extends JPanel{
         Veld[] rij8 = {muren[i++], paden[y++], muren[i++] ,paden[y++],  paden[y++], paden[y++], paden[y++], paden[y++], paden[y++], muren[i++]};
         Veld[] rij9 = {muren[i++], paden[y++],paden[y++],paden[y++],muren[i++],muren[i++], paden[y++],paden[y++],paden[y++],muren[i++]};
         Veld[] rij10 = {muren[i++], muren[i++], muren[i++], muren[i++], muren[i++], muren[i++], muren[i++], muren[i++], muren[i++], muren[i++]};
-        
+        System.out.println("Aantal muren: " + (i-1) + " Aantal paden: " + (y-1));
         velden = new Veld[][]{rij1, rij2, rij3, rij4, rij5, rij6, rij7, rij8, rij9, rij10};
         
         int coordY=0;
@@ -80,8 +88,6 @@ public class Speelveld extends JPanel{
         startPositie.speler= speler;
         eindPositie = velden[1][8];
         eindPositie.spelObject = vriend;
-        
-        
     }
     
     
@@ -115,6 +121,18 @@ public class Speelveld extends JPanel{
         @Override
         public void keyReleased(KeyEvent e) {}
     };
+    @Override
+    public void paintComponent(Graphics g)
+    {
+        for(Veld[] veldRij:velden)
+        {
+            for(Veld veld :veldRij)
+            {
+                veld.repaint();
+            }
+        }
+             
+    }
     
     
 }

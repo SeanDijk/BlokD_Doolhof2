@@ -63,7 +63,7 @@ public class Speler extends JComponent{
 
     private Veld getHuidigVeld()
     {
-         for(Veld[] rijen: velden)
+        for(Veld[] rijen: velden)
         {
             
             for(Veld veld: rijen)

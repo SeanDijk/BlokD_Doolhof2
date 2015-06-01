@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -54,7 +55,7 @@ public class MainFrame extends JFrame{
         @Override
         public void keyPressed(KeyEvent e) {
             String key = Character.toString(e.getKeyChar());
-            System.out.println(key);
+            
             if("w".equals(key))
             {
                 level.speler.move("up");
@@ -76,11 +77,6 @@ public class MainFrame extends JFrame{
         @Override
         public void keyReleased(KeyEvent e) {}
     };
-    
-    
-    
-    
-    
- 
-    
 }
+    
+    
