@@ -5,6 +5,8 @@
  */
 package blokd_doolhof;
 
+import java.awt.Color;
+
 /**
  *
  * @author Sean
@@ -16,6 +18,7 @@ public class Valsspeler extends SpelObject{
     public Valsspeler(int aantal)
     {
         this.aantal = aantal;
+        kleur = Color.CYAN;
     }
     @Override
     public void doAction() //Terugdraaien Stappen

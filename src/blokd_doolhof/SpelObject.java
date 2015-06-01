@@ -23,7 +23,7 @@ public abstract class SpelObject extends JComponent{
     public void paintComponent(Graphics g)
     {
         g.setColor(kleur);    
-        g.fillRect(0, 0, getWidth(), getWidth()); 
+        g.fillOval(0, 0, this.getParent().getWidth(), this.getParent().getHeight());
     }
     
     public void doAction()
@@ -31,5 +31,4 @@ public abstract class SpelObject extends JComponent{
         
     }
 
-    
 }

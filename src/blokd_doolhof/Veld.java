@@ -32,21 +32,25 @@ public abstract class Veld extends JComponent{
     public void paintComponent(Graphics g)
     {
             g.setColor(kleur);            
+      
+            //Tekent het veld
+            g.fillRect(0, 0, this.getWidth(), this.getHeight()); 
             
             //Tekent het spelobject op het veld
-            if(spelObject != null)
+            if(spelObject != null && spelObject.disabled ==false)
             {
+                add(spelObject);
                 spelObject.paintComponent(g);
             }
             
-            g.fillRect(0, 0, this.getWidth(), this.getHeight()); 
+            
             
             //Tekent de speler op het veld
             if(speler != null)
             {
+                add(speler);
                 speler.paintComponent(g);                
             }
-            //Tekent het veld
              
     }
     

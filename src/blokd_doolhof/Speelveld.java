@@ -90,7 +90,7 @@ public class Speelveld extends JPanel{
         startPositie.speler= speler;
         eindPositie = velden[1][8];
         eindPositie.spelObject = vriend;
-        velden[2][1].spelObject = new Valsspeler(20);
+        velden[3][3].spelObject = new Valsspeler(5);
         
     }
     
