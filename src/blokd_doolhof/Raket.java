@@ -17,6 +17,7 @@ public class Raket extends JComponent implements Mover{
     
     Veld R;
     String direction;
+    boolean disabled = false;
     public Raket(Veld R)
     {
        R.Raket = this;
@@ -100,7 +101,9 @@ public class Raket extends JComponent implements Mover{
             move(direction);
         }
         else{
-            System.out.println("Cant move there, it's a wall! ");
+            nieuwVeld.walkable = true;
+            nieuwVeld.kleur = Color.DARK_GRAY;
+            disabled = true;
         }
         
     }

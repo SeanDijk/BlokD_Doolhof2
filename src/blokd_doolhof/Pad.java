@@ -21,6 +21,7 @@ public class Pad extends Veld{
         Border border = new BevelBorder(1);
         setBackground(Color.blue);
         setBorder(border);
+        walkable= true;
     }
     
 }

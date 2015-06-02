@@ -23,6 +23,8 @@ public abstract class Veld extends JComponent{
     
     int coordsX;
     int coordsY;
+    
+    boolean walkable;
     public Veld()
     {
         kleur = Color.red;
@@ -45,7 +47,7 @@ public abstract class Veld extends JComponent{
                 spelObject.paintComponent(g);
             }
             //Tekent de raket
-            if(Raket != null)
+            if(Raket != null && Raket.disabled == false)
             {
                 add(Raket);
                 Raket.paintComponent(g);
@@ -78,8 +80,8 @@ public abstract class Veld extends JComponent{
 
     
     public boolean isWalkable()
-    {
-        return true;
+    {        
+        return walkable;
     }
     
     @Override

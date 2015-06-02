@@ -21,14 +21,10 @@ public class Muur extends Veld{
         Border border = new BevelBorder(1);
         setBackground(Color.red);
         setBorder(border);
-        
+        walkable=false;
         
     }
-    @Override
-        public boolean isWalkable()
-    {
-        return false;
-    }
+
     
 
 }
