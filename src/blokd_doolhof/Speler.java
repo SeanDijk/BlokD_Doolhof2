@@ -20,7 +20,7 @@ public class Speler extends JComponent implements Mover{
     Veld huidigveld;
     static int aantalStappen=0;
     static Pickupable pickup;
-    
+    String direction;
     
     public Speler()
     {
@@ -37,6 +37,7 @@ public class Speler extends JComponent implements Mover{
     @Override
     public void move(String direction)
     {
+        this.direction = direction;
         huidigveld=getHuidigVeld();
         Veld nieuwVeld = null;
         

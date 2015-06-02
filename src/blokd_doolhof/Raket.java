@@ -16,9 +16,14 @@ import javax.swing.JComponent;
 public class Raket extends JComponent implements Mover{
     
     Veld R;
+    String direction;
     public Raket(Veld R)
     {
-       move("left");
+       R.Raket = this;
+       R = getSpelerVeld();
+       direction = R.speler.direction;
+       
+       move(direction);
     }
     @Override
     public void setHuidigVeld()
@@ -30,6 +35,23 @@ public class Raket extends JComponent implements Mover{
     
     @Override
     public Veld getHuidigVeld()
+    {
+        for(Veld[] rijen: Speelveld.velden)
+        {
+            
+            for(Veld veld: rijen)
+            {
+               if(veld.Raket != null)
+               {
+
+                   return veld;
+               }
+            }
+            
+        }
+        return null;
+    }
+    public Veld getSpelerVeld()
     {
         for(Veld[] rijen: Speelveld.velden)
         {
@@ -75,7 +97,7 @@ public class Raket extends JComponent implements Mover{
         {
             setHuidigVeld(nieuwVeld);
             R.repaint();
-            //move("left");
+            move(direction);
         }
         else{
             System.out.println("Cant move there, it's a wall! ");
