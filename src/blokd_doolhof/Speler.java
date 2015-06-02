@@ -19,7 +19,9 @@ import javax.swing.JComponent;
 public class Speler extends JComponent{
     Veld huidigveld;
     static int aantalStappen=0;
+    static boolean BazookaOpgepakt = false;
     Pickupable pickup;
+    
     
     public Speler()
     {
@@ -102,6 +104,15 @@ public class Speler extends JComponent{
         }
     }
     
+    public void BazookaAfschieten()
+    {
+        if (BazookaOpgepakt == true)
+                {
+                    System.out.println("Schiet");
+                    BazookaOpgepakt = false;
+                }
+    }
+    
     
     KeyListener key = new KeyListener() {
 
@@ -127,6 +138,10 @@ public class Speler extends JComponent{
             if("d".equals(key))
             {
                 move("right");
+            }
+            if("p".equals(key))
+            {
+                BazookaAfschieten();
             }
         }
 
