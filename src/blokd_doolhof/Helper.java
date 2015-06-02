@@ -6,6 +6,7 @@
 package blokd_doolhof;
 
 import java.awt.Color;
+import java.util.ArrayList;
 
 /**
  *
@@ -14,12 +15,15 @@ import java.awt.Color;
 public class Helper extends SpelObject{
     
     Veld v;
+    Veld eindveld;
     Veld[][] level; 
     int[][] veldCount;
-    public Helper(Veld v)
+    ArrayList<Veld> solution= new ArrayList<>();
+    public Helper(Veld eigenVeld, Veld eindveld)
     {
-        this.v =v;
+        v =eigenVeld;
         kleur = Color.GRAY;
+        this.eindveld = eindveld;
     }
     
     @Override
@@ -33,21 +37,34 @@ public class Helper extends SpelObject{
        recursiveSolver( v, 1);
        
        printVeldCount();
+       getSolution(eindveld);
+       
+       for(Veld veld:solution)
+       {
+           veld.kleur = Color.ORANGE;
+       }
+       
        this.disabled=true;
     }
     
+    //Initialiseert de veldCount Array.
     public void makeVeldCount()
     {
        veldCount = new int[level.length][level[0].length];
+       int i=0;
+       int j;
        for(int[] rij :veldCount)
-       {
+       { 
+           j=0;
            for(int vakje: rij)
            {
-               vakje = Integer.MAX_VALUE;
+              veldCount[i][j] = Integer.MAX_VALUE;
+              j++;
            }
-           
+           i++;
        }
     }
+    //Print de veldCount Array, deze methode is voor dingen testen.
     public void printVeldCount()
     {
        for(int[] rij :veldCount)
@@ -66,12 +83,12 @@ public class Helper extends SpelObject{
        }
     }
     
-    //Recursieve methode nodig voor het lopen
-    public boolean recursiveSolver(Veld v, int count)
+    //Recursieve methode nodig voor het doorlopen van het doolhof
+    public void recursiveSolver(Veld v, int count)
     {   
         if(veldCount[v.coordsY][v.coordsX] < count)
         {
-            return false;
+            return;
         }
         
         veldCount[v.coordsY][v.coordsX] = count; 
@@ -91,8 +108,31 @@ public class Helper extends SpelObject{
         {
             recursiveSolver(v.getBuur("down"), (count + 1));
         }
-                
-        return true;
+    }
+    private void getSolution(Veld v)
+    {
+        solution.add(v);
+        //Left
+        if(veldCount[v.coordsY][v.coordsX - 1] < veldCount[v.coordsY][v.coordsX])
+        {
+            getSolution(level[v.coordsY][v.coordsX - 1]);
+        }
+        //Right
+        if(veldCount[v.coordsY][v.coordsX + 1] < veldCount[v.coordsY][v.coordsX])
+        {
+            getSolution(level[v.coordsY][v.coordsX + 1]);
+        }
+        //Up
+        if(veldCount[v.coordsY -1][v.coordsX] < veldCount[v.coordsY][v.coordsX])
+        {
+            getSolution(level[v.coordsY-1][v.coordsX ]);
+        }
+        //Down
+        if(veldCount[v.coordsY +1][v.coordsX] < veldCount[v.coordsY][v.coordsX])
+        {
+            getSolution(level[v.coordsY+1][v.coordsX]);
+        }
+        
     }
     
     
