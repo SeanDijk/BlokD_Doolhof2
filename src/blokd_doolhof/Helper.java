@@ -25,17 +25,56 @@ public class Helper extends SpelObject{
     @Override
     public void doAction()
     {
-        //Startveld = Speelveld.velden[v.coordsY][v.coordsX]
        level = Speelveld.velden.clone();
+       
        v= level[v.coordsY][v.coordsX];
-       veldCount = new int[level.length][level[0].length];
-             
+       makeVeldCount();
+
+       recursiveSolver( v, 1);
+       
+       printVeldCount();
+       this.disabled=true;
     }
+    
+    public void makeVeldCount()
+    {
+       veldCount = new int[level.length][level[0].length];
+       for(int[] rij :veldCount)
+       {
+           for(int vakje: rij)
+           {
+               vakje = Integer.MAX_VALUE;
+           }
+           
+       }
+    }
+    public void printVeldCount()
+    {
+       for(int[] rij :veldCount)
+       {
+           for(int vakje: rij)
+           {
+               int getal = vakje;
+               if(vakje == Integer.MAX_VALUE)
+               {
+                   getal = -1;
+               }
+               
+               System.out.print("[" +getal +"]");
+           }
+           System.out.println("");
+       }
+    }
+    
     //Recursieve methode nodig voor het lopen
     public boolean recursiveSolver(Veld v, int count)
-    {      
-        veldCount[v.coordsY][v.coordsX] = count; 
+    {   
+        if(veldCount[v.coordsY][v.coordsX] < count)
+        {
+            return false;
+        }
         
+        veldCount[v.coordsY][v.coordsX] = count; 
         if(v.getBuur("left").isWalkable())
         {
             recursiveSolver(v.getBuur("left"), (count + 1));

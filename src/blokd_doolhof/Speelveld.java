@@ -93,6 +93,7 @@ public class Speelveld extends JPanel{
         eindPositie.spelObject = vriend;
         velden[3][3].spelObject = new Valsspeler(5);
         velden[8][8].spelObject = new Bazooka();
+        velden[4][1].spelObject = new Helper(velden[4][1]);
         
     }
     
