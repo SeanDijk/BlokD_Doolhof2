@@ -32,25 +32,29 @@ public class Helper extends SpelObject{
              
     }
     //Recursieve methode nodig voor het lopen
-    public boolean recursiveSolver(Veld v)
-    {
+    public boolean recursiveSolver(Veld v, int count)
+    {      
+        veldCount[v.coordsY][v.coordsX] = count; 
+        
         if(v.getBuur("left").isWalkable())
         {
-            
+            recursiveSolver(v.getBuur("left"), (count + 1));
         }
         if(v.getBuur("right").isWalkable())
         {
-            
+            recursiveSolver(v.getBuur("right"), (count + 1));
         }
         if(v.getBuur("up").isWalkable())
         {
-            
+            recursiveSolver(v.getBuur("up"), (count + 1));
         }
         if(v.getBuur("down").isWalkable())
         {
-            
+            recursiveSolver(v.getBuur("down"), (count + 1));
         }
                 
         return true;
     }
+    
+    
 }
