@@ -5,14 +5,24 @@
  */
 package blokd_doolhof;
 
+import java.awt.Color;
+
 /**
  *
  * @author Sean
  */
 public class Bazooka extends SpelObject implements Pickupable{
+    
+    public Bazooka()
+    {
+        kleur = Color.YELLOW;
+    }
+    
+    
     @Override
     public void doAction()
     {
-        
+        System.out.println("Bazooka opgepakt");
+        disabled = true;
     }
 }

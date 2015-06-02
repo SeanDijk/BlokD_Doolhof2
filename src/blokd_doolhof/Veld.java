@@ -19,6 +19,7 @@ public abstract class Veld extends JComponent{
     Color kleur;
     Speler speler;
     SpelObject spelObject;
+    
     int coordsX;
     int coordsY;
     public Veld()
