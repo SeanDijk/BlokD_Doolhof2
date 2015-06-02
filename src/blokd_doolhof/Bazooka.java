@@ -24,5 +24,6 @@ public class Bazooka extends SpelObject implements Pickupable{
     {
         System.out.println("Bazooka opgepakt");
         disabled = true;
+        Speler.BazookaOpgepakt = true;
     }
 }
