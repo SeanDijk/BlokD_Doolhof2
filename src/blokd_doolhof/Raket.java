@@ -7,6 +7,10 @@ package blokd_doolhof;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JComponent;
 
 /**
@@ -80,7 +84,7 @@ public class Raket extends JComponent implements Mover{
     }
     
     @Override
-    public void move(String direction)
+    public void move(final String direction)
     {
         R=getHuidigVeld();
         Veld nieuwVeld = null;
@@ -96,9 +100,19 @@ public class Raket extends JComponent implements Mover{
         
         if(nieuwVeld.isWalkable() == true)
         {
+            
             setHuidigVeld(nieuwVeld);
             R.repaint();
-            move(direction);
+            
+            Timer timer = new Timer();
+            timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                move(direction);
+            }
+            }, 1000);
+            
+            
         }
         else{
             nieuwVeld.walkable = true;
