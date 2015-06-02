@@ -37,8 +37,10 @@ public class Bazooka extends SpelObject implements Pickupable{
     }
 
     @Override
-    public void doActionpickup()
+    public void doActionpickup(Veld veldraket)
     {
+        
+        Raket raket = new Raket(veldraket);
         
     }
     

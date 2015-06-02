@@ -11,5 +11,10 @@ public interface Mover {
     
     public void move(String direction);
     
+    public void setHuidigVeld();
+    
+    public Veld getHuidigVeld();
+    
+    public void setHuidigVeld(Veld veld);
     
 }

@@ -12,7 +12,7 @@ public interface Pickupable {
     
     public void pickup();
     
-    public void doActionpickup();
+    public void doActionpickup(Veld veldraket);
             
 }
  

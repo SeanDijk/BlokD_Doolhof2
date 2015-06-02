@@ -19,6 +19,7 @@ public abstract class Veld extends JComponent{
     Color kleur;
     Speler speler;
     SpelObject spelObject;
+    Raket Raket;
     
     int coordsX;
     int coordsY;
@@ -43,14 +44,18 @@ public abstract class Veld extends JComponent{
                 add(spelObject);
                 spelObject.paintComponent(g);
             }
-            
-            
+            //Tekent de raket
+            if(Raket != null)
+            {
+                add(Raket);
+                Raket.paintComponent(g);
+            }
             
             //Tekent de speler op het veld
             if(speler != null)
             {
                 add(speler);
-                speler.paintComponent(g);                
+                speler.paintComponent(g);         
             }
              
     }

@@ -74,7 +74,7 @@ public class MainFrame extends JFrame{
             }
             if(" ".equals(key))
             {
-                level.speler.BazookaAfschieten();
+                level.speler.BazookaAfschieten(level.speler.huidigveld);
             }
         }
 

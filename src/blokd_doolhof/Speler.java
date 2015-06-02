@@ -64,8 +64,8 @@ public class Speler extends JComponent implements Mover{
         }
         
     }
-
-    private Veld getHuidigVeld()
+    @Override
+    public Veld getHuidigVeld()
     {
         for(Veld[] rijen: velden)
         {
@@ -82,13 +82,15 @@ public class Speler extends JComponent implements Mover{
         }
         return null;
     }
-    private void setHuidigVeld()
+    @Override
+    public void setHuidigVeld()
     {
         huidigveld.speler =null;
         huidigveld = getHuidigVeld();
         huidigveld.speler = this;
     }
-    private void setHuidigVeld(Veld veld)
+    @Override
+    public void setHuidigVeld(Veld veld)
     {
         huidigveld.speler =null;
         huidigveld.repaint();
@@ -104,12 +106,12 @@ public class Speler extends JComponent implements Mover{
         }
     }
     
-    public void BazookaAfschieten()
+    public void BazookaAfschieten(Veld veldraket)
     {
         if (pickup != null)
                 {
                     System.out.println("Schiet");
-                    pickup.doActionpickup();
+                    pickup.doActionpickup(veldraket);
                     pickup = null;
                 }
     }
@@ -142,7 +144,7 @@ public class Speler extends JComponent implements Mover{
             }
             if("p".equals(key))
             {
-                BazookaAfschieten();
+                BazookaAfschieten(huidigveld);
             }
         }
 
