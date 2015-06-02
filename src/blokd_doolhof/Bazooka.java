@@ -17,7 +17,7 @@ public class Bazooka extends SpelObject implements Pickupable{
     public Bazooka(Veld b)
     {
         this.b = b;
-        kleur = Color.YELLOW;
+        kleur = Color.WHITE;
     }
     
     @Override
