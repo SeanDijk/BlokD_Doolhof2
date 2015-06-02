@@ -3,16 +3,13 @@
  * and open the template in the editor.
  */
 package blokd_doolhof;
-
 /**
  *
- * @author Sean
+ * @author Asus
  */
-public interface Pickupable {
+public interface Mover {
     
-    public void pickup();
+    public void move(String direction);
     
-    public void doActionpickup();
-            
+    
 }
- 

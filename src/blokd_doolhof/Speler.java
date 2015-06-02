@@ -16,11 +16,10 @@ import javax.swing.JComponent;
  *
  * @author Sean
  */
-public class Speler extends JComponent{
+public class Speler extends JComponent implements Mover{
     Veld huidigveld;
     static int aantalStappen=0;
-    static boolean BazookaOpgepakt = false;
-    Pickupable pickup;
+    static Pickupable pickup;
     
     
     public Speler()
@@ -35,6 +34,7 @@ public class Speler extends JComponent{
      
     }
     
+    @Override
     public void move(String direction)
     {
         huidigveld=getHuidigVeld();
@@ -106,10 +106,11 @@ public class Speler extends JComponent{
     
     public void BazookaAfschieten()
     {
-        if (BazookaOpgepakt == true)
+        if (pickup != null)
                 {
                     System.out.println("Schiet");
-                    BazookaOpgepakt = false;
+                    pickup.doActionpickup();
+                    pickup = null;
                 }
     }
     

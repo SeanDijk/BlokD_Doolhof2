@@ -72,7 +72,7 @@ public class MainFrame extends JFrame{
             {
                 level.speler.move("right");
             }
-            if("p".equals(key))
+            if(" ".equals(key))
             {
                 level.speler.BazookaAfschieten();
             }

@@ -13,17 +13,33 @@ import java.awt.Color;
  */
 public class Bazooka extends SpelObject implements Pickupable{
     
-    public Bazooka()
+    Veld b;
+    public Bazooka(Veld b)
     {
+        this.b = b;
         kleur = Color.YELLOW;
     }
-    
     
     @Override
     public void doAction()
     {
+        pickup();
         System.out.println("Bazooka opgepakt");
         disabled = true;
-        Speler.BazookaOpgepakt = true;
+        
     }
+
+    @Override
+    public void pickup() 
+    {
+        b.speler.pickup = this;
+        
+    }
+
+    @Override
+    public void doActionpickup()
+    {
+        
+    }
+    
 }
