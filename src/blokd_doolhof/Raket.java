@@ -110,7 +110,7 @@ public class Raket extends JComponent implements Mover{
             public void run() {
                 move(direction);
             }
-            }, 1000);
+            }, 200);
             
             
         }
