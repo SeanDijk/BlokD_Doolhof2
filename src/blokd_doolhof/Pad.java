@@ -18,9 +18,9 @@ public class Pad extends Veld{
     public Pad()
     {
         kleur = Color.blue;
-        Border border = new BevelBorder(1);
+        //Border border = new BevelBorder(1);
         setBackground(Color.blue);
-        setBorder(border);
+        //setBorder(border);
         walkable= true;
     }
     

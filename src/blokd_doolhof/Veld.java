@@ -30,9 +30,9 @@ public abstract class Veld extends JComponent{
     public Veld()
     {
         kleur = Color.red;
-        Border border = new BevelBorder(1);
+        //Border border = new BevelBorder(1);
         setBackground(Color.green);
-        setBorder(border);
+        //setBorder(border);
     }
     @Override
     public void paintComponent(Graphics g)

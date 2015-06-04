@@ -29,8 +29,8 @@ public class Speelveld extends JPanel{
     public Speelveld()
     {
         //addKeyListener(key);
-        loadLevel1();
-        //loadLevel2();        
+        //loadLevel1();
+        loadLevel2();        
     }
     public Speelveld(int levelNumber)
     {
@@ -135,9 +135,9 @@ public class Speelveld extends JPanel{
         startPositie.speler= speler;
         eindPositie = velden[18][18];
         eindPositie.spelObject = vriend;
-        velden[3][3].spelObject = new Valsspeler(5);
+        velden[11][18].spelObject = new Valsspeler(5);
         velden[2][1].spelObject = new Bazooka(velden[2][1]);
-        velden[4][1].spelObject = new Helper(velden[4][1], eindPositie);
+        velden[10][8].spelObject = new Helper(velden[10][8], eindPositie);
     }
     public void giveCoords()
     {

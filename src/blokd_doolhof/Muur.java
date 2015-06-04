@@ -18,9 +18,9 @@ public class Muur extends Veld{
     public Muur()
     {
         kleur = Color.red;
-        Border border = new BevelBorder(1);
+        //Border border = new BevelBorder(1);
         setBackground(Color.red);
-        setBorder(border);
+        //setBorder(border);
         walkable=false;        
     }
 
