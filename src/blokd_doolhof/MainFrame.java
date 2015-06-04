@@ -6,6 +6,7 @@
  */
 package blokd_doolhof;
 
+import com.sun.java.swing.plaf.windows.resources.windows;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
@@ -13,6 +14,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.Border;
@@ -23,30 +25,31 @@ import javax.swing.border.Border;
  */
 public class MainFrame extends JFrame{
 
-    JPanel buttonsPanel = new JPanel();
     Speelveld level = new Speelveld();
-    
+    JPanel stappenteller = new JPanel();
+    JLabel stappen;
+    JLabel aantalStappen;
     public MainFrame()
     {
         setLayout(new BorderLayout());
         add(level, BorderLayout.CENTER);
-        addKeyListener(key);
-        //makeButtonsPanel();
+        makeStappenteller();     
+        addKeyListener(key);   
+        setAutoRequestFocus(rootPaneCheckingEnabled);
     }
 
     
-    
-    
-    public void makeButtonsPanel()
+    public void makeStappenteller()
     {
-        Border b = new BevelBorder(WIDTH);
-        
-        //buttonsPanel.setLayout(new GridLayout(1,1));
-        JButton restart = new JButton("Restart");
-        buttonsPanel.add(restart);
-        buttonsPanel.setBorder(b);
-        add(buttonsPanel, BorderLayout.SOUTH);
+        stappen = new JLabel("Aantal stappen: ");
+        aantalStappen = new JLabel(""+ Speler.aantalStappen);
+        stappenteller.add(stappen);
+        stappenteller.add(aantalStappen);
+
+        add(stappenteller, BorderLayout.SOUTH);
     }
+    
+    
     KeyListener key = new KeyListener() {
 
         @Override
@@ -59,22 +62,26 @@ public class MainFrame extends JFrame{
             if("w".equals(key))
             {
                 level.speler.move("up");
+                aantalStappen.setText(Integer.toString(Speler.aantalStappen));
             }
             if("a".equals(key))
             {
                 level.speler.move("left");
+                aantalStappen.setText(Integer.toString(Speler.aantalStappen));
             }
             if("s".equals(key))
             {
                 level.speler.move("down");
+                aantalStappen.setText(Integer.toString(Speler.aantalStappen));
             }
             if("d".equals(key))
             {
                 level.speler.move("right");
+                aantalStappen.setText(Integer.toString(Speler.aantalStappen));
             }
             if(" ".equals(key))
             {
-                level.speler.BazookaAfschieten(level.speler.huidigveld);
+                level.speler.usePickup(level.speler.huidigveld);
             }
         }
 

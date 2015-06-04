@@ -29,22 +29,25 @@ public class Helper extends SpelObject{
     @Override
     public void doAction()
     {
-       level = Speelveld.velden.clone();
-       
-       v= level[v.coordsY][v.coordsX];
-       makeVeldCount();
-
-       recursiveSolver( v, 1);
-       
-       printVeldCount();
-       getSolution(eindveld);
-       
-       for(Veld veld:solution)
+       if(disabled ==false)
        {
-           veld.kleur = Color.ORANGE;
+            level = Speelveld.velden.clone();
+
+            v= level[v.coordsY][v.coordsX];
+            makeVeldCount();
+
+            recursiveSolver( v, 1);
+
+            printVeldCount();
+            getSolution(eindveld);
+
+            for(Veld veld:solution)
+            {
+                veld.kleur = Color.ORANGE;
+            }
+
+            this.disabled=true;
        }
-       
-       this.disabled=true;
     }
     
     //Initialiseert de veldCount Array.

@@ -5,6 +5,9 @@
  */
 package blokd_doolhof;
 
+import java.awt.image.BufferedImage;
+import java.net.URL;
+import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
 /**
@@ -20,8 +23,9 @@ public class BlokD_Doolhof {
     public static void main(String[] args) {
         frame = new MainFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(400, 400);
+        frame.setSize(700, 700);
         frame.setVisible(true);
     }
     
 }
+

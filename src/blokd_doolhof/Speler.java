@@ -10,6 +10,11 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.image.BufferedImage;
+import java.awt.image.Raster;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 import javax.swing.JComponent;
 
 /**
@@ -24,14 +29,40 @@ public class Speler extends JComponent implements Mover{
     
     public Speler()
     {
-        addKeyListener(key);
+        direction = "down";
+        //addKeyListener(key);
     }
     @Override
     public void paintComponent(Graphics g)
     {
-            g.setColor(Color.green);           
-            g.fillOval(0, 0, getHuidigVeld().getWidth(), getHuidigVeld().getHeight());     
-     
+        tekenObject(g);
+        //g.setColor(Color.green);           
+        //g.fillOval(0, 0, getHuidigVeld().getWidth(), getHuidigVeld().getHeight());   
+        // g.drawImage(img, this.getParent().getWidth(), this.getParent().getHeight(), null);
+
+    }
+    public void tekenObject(Graphics g)
+    {
+        BufferedImage img = null;
+        try {
+            if("down".equals(direction))                
+                img = ImageIO.read(new File("Img/Mario_South.png"));
+            if("up".equals(direction))                
+                img = ImageIO.read(new File("Img/Mario_North.png"));
+            if("left".equals(direction))                
+                img = ImageIO.read(new File("Img/Mario_West.png"));
+            if("right".equals(direction))                
+                img = ImageIO.read(new File("Img/Mario_East.png"));            
+                
+                
+                int middleWidth = (this.getParent().getWidth()/2  - img.getWidth()/2);
+                int middleHeight= (this.getParent().getHeight()/2  - img.getHeight()/2);
+                
+                
+                g.drawImage(img, middleWidth, middleHeight, null);
+            } 
+        catch (IOException e) {
+            }
     }
     
     @Override
@@ -69,8 +100,7 @@ public class Speler extends JComponent implements Mover{
     public Veld getHuidigVeld()
     {
         for(Veld[] rijen: velden)
-        {
-            
+        {            
             for(Veld veld: rijen)
             {
                if(veld.speler != null)
@@ -79,7 +109,6 @@ public class Speler extends JComponent implements Mover{
                    return veld;
                }
             }
-            
         }
         return null;
     }
@@ -107,17 +136,20 @@ public class Speler extends JComponent implements Mover{
         }
     }
     
-    public void BazookaAfschieten(Veld veldraket)
+    /*
+     * Pakt gebruikt de pickup
+     */
+    public void usePickup(Veld pickupVeld)
     {
         if (pickup != null)
                 {
                     System.out.println("Schiet");
-                    pickup.doActionpickup(veldraket);
+                    pickup.doActionpickup(pickupVeld);
                     pickup = null;
                 }
     }
     
-    
+   /* 
     KeyListener key = new KeyListener() {
 
         @Override
@@ -145,11 +177,13 @@ public class Speler extends JComponent implements Mover{
             }
             if("p".equals(key))
             {
-                BazookaAfschieten(huidigveld);
+                usePickup(huidigveld);
             }
         }
 
         @Override
         public void keyReleased(KeyEvent e) {}
     };
+    * 
+    */
 }

@@ -28,9 +28,21 @@ public class Speelveld extends JPanel{
     
     public Speelveld()
     {
-        addKeyListener(key);
-        loadLevel2();
-        
+        //addKeyListener(key);
+        loadLevel1();
+        //loadLevel2();        
+    }
+    public Speelveld(int levelNumber)
+    {
+        //addKeyListener(key);
+        if(levelNumber == 1)
+        {
+            loadLevel1();
+        }
+        else if(levelNumber ==2)
+        {
+            loadLevel2();
+        }
     }
     private void maakPaden(int aantal)
     {
@@ -48,6 +60,7 @@ public class Speelveld extends JPanel{
             muren[i] = object;            
         }
     }
+    
     public void loadLevel1()
     {
         setLayout(new GridLayout(10,10));
@@ -71,20 +84,7 @@ public class Speelveld extends JPanel{
         System.out.println("Aantal muren: " + (i) + " Aantal paden: " + (y));
         velden = new Veld[][]{rij1, rij2, rij3, rij4, rij5, rij6, rij7, rij8, rij9, rij10};
         
-        int coordY=0;
-        int coordsX;
-        for(Veld[] rijen: velden)
-        {
-            coordsX=0;
-            for(Veld kolommen: rijen)
-            {
-                kolommen.coordsY = coordY;
-                kolommen.coordsX = coordsX;
-                add(kolommen);
-                coordsX++;
-            }
-            coordY++;
-        }
+        giveCoords();
         
         
         startPositie = velden[1][1];
@@ -99,8 +99,8 @@ public class Speelveld extends JPanel{
     public void loadLevel2()
     {
         setLayout(new GridLayout(20,20));
-        maakPaden(400);
-        maakMuren(400);
+        maakPaden(180);
+        maakMuren(220);
         
         int i =0;
         int y = 0;   
@@ -129,6 +129,18 @@ public class Speelveld extends JPanel{
         System.out.println("Aantal muren: " + (i) + " Aantal paden: " + (y));
         velden = new Veld[][]{rij1, rij2, rij3, rij4, rij5, rij6, rij7, rij8, rij9, rij10, rij11, rij12, rij13, rij14, rij15, rij16, rij17, rij18, rij19, rij20};
         
+        giveCoords();
+        
+        startPositie = velden[1][1];
+        startPositie.speler= speler;
+        eindPositie = velden[18][18];
+        eindPositie.spelObject = vriend;
+        velden[3][3].spelObject = new Valsspeler(5);
+        velden[2][1].spelObject = new Bazooka(velden[2][1]);
+        velden[4][1].spelObject = new Helper(velden[4][1], eindPositie);
+    }
+    public void giveCoords()
+    {
         int coordY=0;
         int coordsX;
         for(Veld[] rijen: velden)
@@ -143,14 +155,6 @@ public class Speelveld extends JPanel{
             }
             coordY++;
         }
-        
-        startPositie = velden[1][1];
-        startPositie.speler= speler;
-        eindPositie = velden[18][18];
-        eindPositie.spelObject = vriend;
-        velden[3][3].spelObject = new Valsspeler(5);
-        velden[8][8].spelObject = new Bazooka(velden[8][8]);
-        velden[4][1].spelObject = new Helper(velden[4][1], eindPositie);
     }
     
     

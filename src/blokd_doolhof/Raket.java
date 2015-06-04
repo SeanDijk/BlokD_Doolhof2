@@ -19,23 +19,23 @@ import javax.swing.JComponent;
  */
 public class Raket extends JComponent implements Mover{
     
-    Veld R;
+    Veld huidigVeld;
     String direction;
     boolean disabled = false;
-    public Raket(Veld R)
+    public Raket(Veld huidigVeld)
     {
-       R.Raket = this;
-       R = getSpelerVeld();
-       direction = R.speler.direction;
+       huidigVeld.Raket = this;
+       huidigVeld = getHuidigVeld();
+       direction = huidigVeld.speler.direction;
        
        move(direction);
     }
     @Override
     public void setHuidigVeld()
     {
-        R.Raket =null;
-        R = getHuidigVeld();
-        R.Raket = this;
+        huidigVeld.Raket =null;
+        huidigVeld = getHuidigVeld();
+        huidigVeld.Raket = this;
     }
     
     @Override
@@ -56,53 +56,37 @@ public class Raket extends JComponent implements Mover{
         }
         return null;
     }
-    public Veld getSpelerVeld()
-    {
-        for(Veld[] rijen: Speelveld.velden)
-        {
-            
-            for(Veld veld: rijen)
-            {
-               if(veld.speler != null)
-               {
 
-                   return veld;
-               }
-            }
-            
-        }
-        return null;
-    }
     
     @Override
     public void setHuidigVeld(Veld veld)
     {
-        R.Raket =null;
-        R.repaint();
-        R = veld;
-        R.Raket = this;
+        huidigVeld.Raket =null;
+        huidigVeld.repaint();
+        huidigVeld = veld;
+        huidigVeld.Raket = this;
     }
     
     @Override
     public void move(final String direction)
     {
-        R=getHuidigVeld();
+        huidigVeld=getHuidigVeld();
         Veld nieuwVeld = null;
         
         if("left".equals(direction))
-            nieuwVeld = R.getBuur("left");
+            nieuwVeld = huidigVeld.getBuur("left");
         if("right".equals(direction))
-            nieuwVeld = R.getBuur("right");
+            nieuwVeld = huidigVeld.getBuur("right");
         if("up".equals(direction)) 
-            nieuwVeld = R.getBuur("up");        
+            nieuwVeld = huidigVeld.getBuur("up");        
         if("down".equals(direction))
-            nieuwVeld = R.getBuur("down");      
+            nieuwVeld = huidigVeld.getBuur("down");      
         
         if(nieuwVeld.isWalkable() == true)
         {
             
             setHuidigVeld(nieuwVeld);
-            R.repaint();
+            huidigVeld.repaint();
             
             Timer timer = new Timer();
             timer.schedule(new TimerTask() {

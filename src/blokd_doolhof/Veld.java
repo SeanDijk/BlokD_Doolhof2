@@ -7,6 +7,8 @@ package blokd_doolhof;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.geom.AffineTransform;
 import javax.swing.JComponent;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.Border;
@@ -35,6 +37,7 @@ public abstract class Veld extends JComponent{
     @Override
     public void paintComponent(Graphics g)
     {
+                    
             g.setColor(kleur);            
       
             //Tekent het veld
@@ -89,4 +92,5 @@ public abstract class Veld extends JComponent{
     {
         return("X = " + coordsX +"  Y = " + coordsY);
     }
+
 }
