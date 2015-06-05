@@ -83,6 +83,11 @@ public class MainFrame extends JFrame{
             {
                 level.speler.usePickup(level.speler.huidigveld);
             }
+            if("c".equals(key))
+            {
+                level.speler.getHuidigVeld().spelObject = new Helper(level.speler.getHuidigVeld(), level.eindPositie);
+                level.speler.spelObjectAction();
+            }
         }
 
         @Override

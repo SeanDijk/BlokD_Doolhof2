@@ -128,7 +128,7 @@ public class Speler extends JComponent implements Mover{
         huidigveld.speler = this;
     }
     
-    private void spelObjectAction()
+    public void spelObjectAction()
     {
         if(huidigveld.spelObject != null)
         {
