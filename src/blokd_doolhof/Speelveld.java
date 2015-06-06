@@ -200,13 +200,12 @@ public class Speelveld extends JPanel{
         {
             for(Veld veld :veldRij)
             {
-                System.out.println("Huidigveld: " + veld);
+                //System.out.println("Huidigveld: " + veld);
                 veld.buurBoven = veld.getBuur("up");
                 veld.buurLinks = veld.getBuur("left");
                 veld.buurOnder = veld.getBuur("down");
                 veld.buurRechts  =veld.getBuur("right");
                 
-                System.out.println(veld.buurBoven);
             }
         } 
     }

@@ -16,7 +16,6 @@ public class Helper extends SpelObject{
     
     Veld v;
     Veld eindveld;
-    Veld[][] level; 
     int[][] veldCount;
     ArrayList<Veld> solution= new ArrayList<>();
     public Helper(Veld eigenVeld, Veld eindveld)
@@ -31,9 +30,7 @@ public class Helper extends SpelObject{
     {
        if(disabled ==false)
        {
-            level = Speelveld.velden.clone();
-
-            v= level[v.coordsY][v.coordsX];
+            v= Speelveld.velden[v.coordsY][v.coordsX];
             makeVeldCount();
 
             recursiveSolver( v, 1);
@@ -54,7 +51,7 @@ public class Helper extends SpelObject{
     //Initialiseert de veldCount Array.
     public void makeVeldCount()
     {
-       veldCount = new int[level.length][level[0].length];
+       veldCount = new int[Speelveld.velden.length][Speelveld.velden[0].length];
        int i=0;
        int j;
        for(int[] rij :veldCount)
@@ -90,6 +87,10 @@ public class Helper extends SpelObject{
     //Recursieve methode nodig voor het doorlopen van het doolhof
     public void recursiveSolver(Veld v, int count)
     {   
+        if(v == eindveld)
+        {
+            System.out.println("This route is " + count + " steps");
+        }
         if(veldCount[v.coordsY][v.coordsX] < count)
         {
             return;
@@ -119,22 +120,22 @@ public class Helper extends SpelObject{
         //Left
         if(veldCount[v.coordsY][v.coordsX - 1] < veldCount[v.coordsY][v.coordsX])
         {
-            getSolution(level[v.coordsY][v.coordsX - 1]);
+            getSolution(Speelveld.velden[v.coordsY][v.coordsX - 1]);
         }
         //Right
         if(veldCount[v.coordsY][v.coordsX + 1] < veldCount[v.coordsY][v.coordsX])
         {
-            getSolution(level[v.coordsY][v.coordsX + 1]);
+            getSolution(Speelveld.velden[v.coordsY][v.coordsX + 1]);
         }
         //Up
         if(veldCount[v.coordsY -1][v.coordsX] < veldCount[v.coordsY][v.coordsX])
         {
-            getSolution(level[v.coordsY-1][v.coordsX ]);
+            getSolution(Speelveld.velden[v.coordsY-1][v.coordsX ]);
         }
         //Down
         if(veldCount[v.coordsY +1][v.coordsX] < veldCount[v.coordsY][v.coordsX])
         {
-            getSolution(level[v.coordsY+1][v.coordsX]);
+            getSolution(Speelveld.velden[v.coordsY+1][v.coordsX]);
         }
         
     }
