@@ -26,6 +26,11 @@ public abstract class Veld extends JComponent{
     int coordsX;
     int coordsY;
     
+    Veld buurLinks;
+    Veld buurRechts;
+    Veld buurBoven;
+    Veld buurOnder;
+    
     boolean walkable;
     public Veld()
     {
@@ -69,14 +74,39 @@ public abstract class Veld extends JComponent{
     public Veld getBuur(String direction)
     {
         Veld veld = null;
-        if("left".equals(direction))
-            veld = Speelveld.velden[coordsY][coordsX-1];
-        if("right".equals(direction))
-            veld = Speelveld.velden[coordsY][coordsX+1];
-        if("up".equals(direction))
-            veld = Speelveld.velden[coordsY-1][coordsX];
-        if("down".equals(direction)) 
-            veld = Speelveld.velden[coordsY+1][coordsX];
+        try{
+            if("left".equals(direction))
+                veld = Speelveld.velden[coordsY][coordsX-1];
+        }
+        catch(ArrayIndexOutOfBoundsException e)
+        {
+            
+        }
+        try{
+            if("right".equals(direction))
+                veld = Speelveld.velden[coordsY][coordsX+1];
+        }
+        catch(ArrayIndexOutOfBoundsException e)
+        {
+            
+        }
+        try{
+            if("up".equals(direction))
+               veld = Speelveld.velden[coordsY-1][coordsX];
+        }
+        catch(ArrayIndexOutOfBoundsException e)
+        {
+            
+        }
+        try{
+            if("down".equals(direction)) 
+                veld = Speelveld.velden[coordsY+1][coordsX];
+        }
+        catch(ArrayIndexOutOfBoundsException e)
+        {
+            
+        }      
+
         return veld;
     }
 

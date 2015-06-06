@@ -85,10 +85,11 @@ public class Speelveld extends JPanel{
         velden = new Veld[][]{rij1, rij2, rij3, rij4, rij5, rij6, rij7, rij8, rij9, rij10};
         
         giveCoords();
-        
+        setBuren();
         
         startPositie = velden[1][1];
         startPositie.speler= speler;
+        speler.huidigveld = startPositie;
         eindPositie = velden[1][8];
         eindPositie.spelObject = vriend;
         velden[3][3].spelObject = new Valsspeler(5);
@@ -130,9 +131,12 @@ public class Speelveld extends JPanel{
         velden = new Veld[][]{rij1, rij2, rij3, rij4, rij5, rij6, rij7, rij8, rij9, rij10, rij11, rij12, rij13, rij14, rij15, rij16, rij17, rij18, rij19, rij20};
         
         giveCoords();
+        setBuren(); 
+        
         
         startPositie = velden[1][1];
         startPositie.speler= speler;
+        speler.huidigveld = startPositie;
         eindPositie = velden[18][18];
         eindPositie.spelObject = vriend;
         velden[11][18].spelObject = new Valsspeler(5);
@@ -188,17 +192,23 @@ public class Speelveld extends JPanel{
         @Override
         public void keyReleased(KeyEvent e) {}
     };
-    @Override
-    public void paintComponent(Graphics g)
+
+
+    private void setBuren() 
     {
         for(Veld[] veldRij:velden)
         {
             for(Veld veld :veldRij)
             {
-                veld.repaint();
+                System.out.println("Huidigveld: " + veld);
+                veld.buurBoven = veld.getBuur("up");
+                veld.buurLinks = veld.getBuur("left");
+                veld.buurOnder = veld.getBuur("down");
+                veld.buurRechts  =veld.getBuur("right");
+                
+                System.out.println(veld.buurBoven);
             }
-        }
-             
+        } 
     }
     
     

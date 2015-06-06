@@ -30,6 +30,7 @@ public class Speler extends JComponent implements Mover{
     public Speler()
     {
         direction = "down";
+        
         //addKeyListener(key);
     }
     @Override
@@ -69,17 +70,17 @@ public class Speler extends JComponent implements Mover{
     public void move(String direction)
     {
         this.direction = direction;
-        huidigveld=getHuidigVeld();
+        
         Veld nieuwVeld = null;
         
         if("left".equals(direction))
-            nieuwVeld = huidigveld.getBuur("left");
+            nieuwVeld = huidigveld.buurLinks;
         if("right".equals(direction))
-            nieuwVeld = huidigveld.getBuur("right");
+            nieuwVeld = huidigveld.buurRechts;
         if("up".equals(direction)) 
-            nieuwVeld = huidigveld.getBuur("up");        
+            nieuwVeld = huidigveld.buurBoven;        
         if("down".equals(direction))
-            nieuwVeld = huidigveld.getBuur("down");      
+            nieuwVeld = huidigveld.buurOnder;      
         
         if(nieuwVeld.isWalkable() == true)
         {

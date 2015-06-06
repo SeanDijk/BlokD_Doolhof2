@@ -44,6 +44,7 @@ public class Helper extends SpelObject{
             for(Veld veld:solution)
             {
                 veld.kleur = Color.ORANGE;
+                veld.repaint();
             }
 
             this.disabled=true;
