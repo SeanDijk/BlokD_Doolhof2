@@ -24,6 +24,7 @@ public class Vriend extends SpelObject{
     @Override
     public void doAction()
     {
+        
         System.out.println("Gewonnen!!");
 
         JOptionPane.showMessageDialog(BlokD_Doolhof.frame, "Level gehaald!");

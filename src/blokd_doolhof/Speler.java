@@ -14,6 +14,8 @@ import java.awt.image.BufferedImage;
 import java.awt.image.Raster;
 import java.io.File;
 import java.io.IOException;
+import java.util.Timer;
+import java.util.TimerTask;
 import javax.imageio.ImageIO;
 import javax.swing.JComponent;
 
@@ -26,40 +28,30 @@ public class Speler extends JComponent implements Mover{
     static int aantalStappen=0;
     static Pickupable pickup;
     String direction;
+    String imagePath;
+    String[] images;
     
     public Speler()
     {
         direction = "down";
-        
+        imagePath = "Img/Mario_South.png";
         //addKeyListener(key);
     }
     @Override
     public void paintComponent(Graphics g)
     {
-        tekenObject(g);
-        //g.setColor(Color.green);           
-        //g.fillOval(0, 0, getHuidigVeld().getWidth(), getHuidigVeld().getHeight());   
-        // g.drawImage(img, this.getParent().getWidth(), this.getParent().getHeight(), null);
-
+        tekenObject(g, imagePath);
     }
-    public void tekenObject(Graphics g)
+
+    public void tekenObject(Graphics g, String path )
     {
         BufferedImage img = null;
-        try {
-            if("down".equals(direction))                
-                img = ImageIO.read(new File("Img/Mario_South.png"));
-            if("up".equals(direction))                
-                img = ImageIO.read(new File("Img/Mario_North.png"));
-            if("left".equals(direction))                
-                img = ImageIO.read(new File("Img/Mario_West.png"));
-            if("right".equals(direction))                
-                img = ImageIO.read(new File("Img/Mario_East.png"));            
-                
-                
+        try {              
+                img = ImageIO.read(new File(path));            
+                                
                 int middleWidth = (this.getParent().getWidth()/2  - img.getWidth()/2);
                 int middleHeight= (this.getParent().getHeight()/2  - img.getHeight()/2);
-                
-                
+                                
                 g.drawImage(img, middleWidth, middleHeight, null);
             } 
         catch (IOException e) {
@@ -74,13 +66,25 @@ public class Speler extends JComponent implements Mover{
         Veld nieuwVeld = null;
         
         if("left".equals(direction))
+        {
             nieuwVeld = huidigveld.buurLinks;
+            imagePath = "Img/Mario_West.png";
+        }
         if("right".equals(direction))
+        {
             nieuwVeld = huidigveld.buurRechts;
+            imagePath = "Img/Mario_East.png";
+        }
         if("up".equals(direction)) 
-            nieuwVeld = huidigveld.buurBoven;        
+        {
+            nieuwVeld = huidigveld.buurBoven; 
+            imagePath = "Img/Mario_North.png";
+        }
         if("down".equals(direction))
-            nieuwVeld = huidigveld.buurOnder;      
+        {
+            nieuwVeld = huidigveld.buurOnder;  
+            imagePath = "Img/Mario_South.png";
+        }
         
         if(nieuwVeld.isWalkable() == true)
         {
@@ -93,6 +97,7 @@ public class Speler extends JComponent implements Mover{
 
         }
         else{
+            huidigveld.repaint();
             System.out.println("Cant move there, it's a wall! ");
         }
         
@@ -142,6 +147,10 @@ public class Speler extends JComponent implements Mover{
      */
     public void usePickup(Veld pickupVeld)
     {
+        for (int i = 0; i < 6; i++) {
+            
+        }
+        
         if (pickup != null)
                 {
                     System.out.println("Schiet");
@@ -149,6 +158,8 @@ public class Speler extends JComponent implements Mover{
                     pickup = null;
                 }
     }
+   
+}
     
    /* 
     KeyListener key = new KeyListener() {
@@ -187,4 +198,4 @@ public class Speler extends JComponent implements Mover{
     };
     * 
     */
-}
+
