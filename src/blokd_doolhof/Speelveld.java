@@ -25,6 +25,7 @@ public class Speelveld extends JPanel{
     Speler speler = new Speler();
     Vriend vriend = new Vriend();
     
+    int currentLevel = 0;
     
     public Speelveld()
     {
@@ -43,6 +44,7 @@ public class Speelveld extends JPanel{
         {
             loadLevel2();
         }
+        Speler.aantalStappen = 0;
     }
     private void maakPaden(int aantal)
     {
@@ -62,7 +64,8 @@ public class Speelveld extends JPanel{
     }
     
     public void loadLevel1()
-    {
+    { 
+        currentLevel =1;
         setLayout(new GridLayout(10,10));
         maakPaden(40);
         maakMuren(60);
@@ -99,6 +102,7 @@ public class Speelveld extends JPanel{
     }
     public void loadLevel2()
     {
+        currentLevel =2;
         setLayout(new GridLayout(20,20));
         maakPaden(180);
         maakMuren(220);

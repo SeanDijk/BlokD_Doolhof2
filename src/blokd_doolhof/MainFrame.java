@@ -83,6 +83,19 @@ public class MainFrame extends JFrame{
             {
                 level.speler.usePickup(level.speler.huidigveld);
             }
+            if("r".equals(key))
+            {
+                remove(level);
+                level = new Speelveld(level.currentLevel);
+                add(level, BorderLayout.CENTER);
+                
+                //Een omweg om te repainten aangezien een gewone repaint het niet goed deed.
+                setSize(getWidth()-1, getHeight() -1);
+                setSize(getWidth()+1, getHeight() +1);
+                
+                
+                aantalStappen.setText(Integer.toString(Speler.aantalStappen));
+            }
             if("c".equals(key))
             {
                 level.speler.getHuidigVeld().spelObject = new Helper(level.speler.getHuidigVeld(), level.eindPositie);
