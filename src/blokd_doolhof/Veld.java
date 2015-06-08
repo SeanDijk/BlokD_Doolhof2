@@ -9,6 +9,10 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 import javax.swing.JComponent;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.Border;
@@ -32,6 +36,9 @@ public abstract class Veld extends JComponent{
     Veld buurOnder;
     
     boolean walkable;
+    
+    String imagePath;
+    
     public Veld()
     {
         kleur = Color.red;
@@ -46,7 +53,8 @@ public abstract class Veld extends JComponent{
             g.setColor(kleur);            
       
             //Tekent het veld
-            g.fillRect(0, 0, this.getWidth(), this.getHeight()); 
+            tekenObject(g);
+            //g.fillRect(0, 0, this.getWidth(), this.getHeight()); 
             
             //Tekent het spelobject op het veld
             if(spelObject != null && spelObject.disabled ==false)
@@ -69,7 +77,17 @@ public abstract class Veld extends JComponent{
             }
              
     }
-    
+     public void tekenObject(Graphics g)
+    {
+        BufferedImage img = null;
+        try {
+             
+                img = ImageIO.read(new File(imagePath));            
+                g.drawImage(img, 0, 0, null);
+            } 
+        catch (IOException e) {
+            }
+    }
     //
     public Veld getBuur(String direction)
     {

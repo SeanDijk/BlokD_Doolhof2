@@ -23,7 +23,7 @@ public class BlokD_Doolhof {
     public static void main(String[] args) {
         frame = new MainFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(700, 700);
+        frame.setSize(800, 800);
         frame.setVisible(true);
     }
     

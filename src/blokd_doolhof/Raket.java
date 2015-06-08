@@ -100,8 +100,10 @@ public class Raket extends JComponent implements Mover{
         }
         else{
             nieuwVeld.walkable = true;
-            nieuwVeld.kleur = Color.DARK_GRAY;
+            nieuwVeld.imagePath = "Img/Path.png";
             disabled = true;
+            huidigVeld.repaint();
+            nieuwVeld.repaint();
         }
         
     }

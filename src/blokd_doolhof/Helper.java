@@ -40,7 +40,7 @@ public class Helper extends SpelObject{
 
             for(Veld veld:solution)
             {
-                veld.kleur = Color.ORANGE;
+                veld.imagePath = "Img/Path_Optimal.png";
                 veld.repaint();
             }
 

@@ -8,6 +8,7 @@ package blokd_doolhof;
 
 import com.sun.java.swing.plaf.windows.resources.windows;
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.KeyEvent;
@@ -32,7 +33,13 @@ public class MainFrame extends JFrame{
     public MainFrame()
     {
         setLayout(new BorderLayout());
+
+        level.setMaximumSize(new Dimension(800, 800));
+        level.setMinimumSize(new Dimension(800, 800));
         add(level, BorderLayout.CENTER);
+        
+
+        
         makeStappenteller();     
         addKeyListener(key);   
         setAutoRequestFocus(rootPaneCheckingEnabled);
