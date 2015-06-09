@@ -26,7 +26,7 @@ import javax.swing.border.Border;
  */
 public class MainFrame extends JFrame{
 
-    Speelveld level = new Speelveld();
+    Speelveld level = new Speelveld(3);
     JPanel stappenteller = new JPanel();
     JLabel stappen;
     JLabel aantalStappen;
@@ -37,9 +37,7 @@ public class MainFrame extends JFrame{
         level.setMaximumSize(new Dimension(800, 800));
         level.setMinimumSize(new Dimension(800, 800));
         add(level, BorderLayout.CENTER);
-        
-
-        
+                
         makeStappenteller();     
         addKeyListener(key);   
         setAutoRequestFocus(rootPaneCheckingEnabled);
