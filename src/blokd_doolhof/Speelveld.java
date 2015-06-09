@@ -23,7 +23,7 @@ public class Speelveld extends JPanel{
     Veld startPositie;
     Veld eindPositie;
     Speler speler = new Speler();
-    Vriend vriend = new Vriend();
+    Vriend vriend;
     
     int currentLevel = 0;
     
@@ -94,7 +94,7 @@ public class Speelveld extends JPanel{
         startPositie.speler= speler;
         speler.huidigveld = startPositie;
         eindPositie = velden[1][8];
-        eindPositie.spelObject = vriend;
+        eindPositie.spelObject = (vriend = new Vriend(eindPositie));
         velden[3][3].spelObject = new Valsspeler(5);
         velden[8][8].spelObject = new Bazooka(velden[8][8]);
         velden[4][1].spelObject = new Helper(velden[4][1], eindPositie);
@@ -142,7 +142,7 @@ public class Speelveld extends JPanel{
         startPositie.speler= speler;
         speler.huidigveld = startPositie;
         eindPositie = velden[18][18];
-        eindPositie.spelObject = vriend;
+        eindPositie.spelObject = (vriend = new Vriend(eindPositie));
         velden[11][18].spelObject = new Valsspeler(5);
         velden[2][1].spelObject = new Bazooka(velden[2][1]);
         velden[10][8].spelObject = new Helper(velden[10][8], eindPositie);

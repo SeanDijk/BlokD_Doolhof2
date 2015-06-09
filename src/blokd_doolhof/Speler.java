@@ -140,6 +140,7 @@ public class Speler extends JComponent implements Mover{
         {
             huidigveld.spelObject.doAction();
         }
+        
     }
     
     /*
@@ -147,9 +148,6 @@ public class Speler extends JComponent implements Mover{
      */
     public void usePickup(Veld pickupVeld)
     {
-        for (int i = 0; i < 6; i++) {
-            
-        }
         
         if (pickup != null)
                 {
@@ -157,6 +155,30 @@ public class Speler extends JComponent implements Mover{
                     pickup.doActionpickup(pickupVeld);
                     pickup = null;
                 }
+    }
+    public void winAnimation(final int i )
+    {
+        images = new String[6];
+        images[0]  ="Img/1.png";
+        images[1]  ="Img/2.png";
+        images[2]  ="Img/3.png";
+        images[3]  ="Img/4.png";
+        images[4]  ="Img/5.png";
+        images[5]  ="Img/6.png";
+        
+        Timer timer = new Timer();
+            timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                if(i<6)
+                {
+                    imagePath = images[i];
+                    huidigveld.repaint();
+                    winAnimation(i+1);
+                }
+            }
+            }, 80);
+
     }
    
 }

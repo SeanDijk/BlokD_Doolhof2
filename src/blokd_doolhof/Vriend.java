@@ -15,10 +15,11 @@ import static javax.swing.JOptionPane.PLAIN_MESSAGE;
  * @author Sean
  */
 public class Vriend extends SpelObject{
-    
-    public Vriend()
+    Veld v;
+    public Vriend(Veld v)
     {
         kleur = Color.MAGENTA;
+        this.v = v;
     }
     
     @Override
@@ -26,7 +27,7 @@ public class Vriend extends SpelObject{
     {
         
         System.out.println("Gewonnen!!");
-
+        v.speler.winAnimation(0);
         JOptionPane.showMessageDialog(BlokD_Doolhof.frame, "Level gehaald!");
         
     }
