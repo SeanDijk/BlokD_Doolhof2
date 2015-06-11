@@ -26,16 +26,15 @@ import javax.swing.border.Border;
  */
 public class MainFrame extends JFrame{
 
-    Speelveld level = new Speelveld(3);
+    Speelveld level;
     JPanel stappenteller = new JPanel();
     JLabel stappen;
     JLabel aantalStappen;
-    public MainFrame()
+    public MainFrame(int levelNumber)
     {
         setLayout(new BorderLayout());
 
-        level.setMaximumSize(new Dimension(800, 800));
-        level.setMinimumSize(new Dimension(800, 800));
+        level = new Speelveld(levelNumber);
         add(level, BorderLayout.CENTER);
                 
         makeStappenteller();     

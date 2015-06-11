@@ -20,11 +20,13 @@ public class BlokD_Doolhof {
      * @param args the command line arguments
      */
     static MainFrame frame;
+    static StartupFrame start;
     public static void main(String[] args) {
-        frame = new MainFrame();
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(800, 800);
-        frame.setVisible(true);
+        
+        start = new StartupFrame();
+        start.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        start.setSize(200, 100);
+        start.setVisible(true);
     }
     
 }
