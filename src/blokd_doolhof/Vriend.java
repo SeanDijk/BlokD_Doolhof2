@@ -24,7 +24,6 @@ public class Vriend extends SpelObject{
     String imagePath;
     public Vriend(Veld v)
     {
-        //kleur = Color.MAGENTA;
         this.v = v;
         imagePath = "Img/Vriend.png";
         

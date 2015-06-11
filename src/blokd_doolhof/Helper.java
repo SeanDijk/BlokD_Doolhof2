@@ -27,7 +27,6 @@ public class Helper extends SpelObject{
     public Helper(Veld eigenVeld, Veld eindveld)
     {
         v =eigenVeld;
-        //kleur = Color.GRAY;
         this.eindveld = eindveld;
         imagePath = "Img/Helper.png";
     }

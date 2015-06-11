@@ -22,7 +22,6 @@ public class Bazooka extends SpelObject implements Pickupable{
     public Bazooka(Veld b)
     {
         this.b = b;
-        //kleur = Color.WHITE;
         
         imagePath = "Img/Bazooka.png";
     }

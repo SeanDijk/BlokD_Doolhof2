@@ -28,6 +28,7 @@ public class Raket extends JComponent implements Mover{
     String direction;
     boolean disabled = false;
     String imagePath;
+    
     public Raket(Veld huidigVeld)
     {
        huidigVeld.Raket = this;

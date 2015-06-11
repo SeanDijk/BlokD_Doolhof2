@@ -23,7 +23,6 @@ public class Valsspeler extends SpelObject{
     public Valsspeler(int aantal)
     {
         this.aantal = aantal;
-        kleur = Color.CYAN;
         imagePath = "Img/Valsspeler.png";
     }
     
