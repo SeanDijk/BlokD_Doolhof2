@@ -47,7 +47,7 @@ public class StartupFrame extends JFrame{
         @Override
         public void actionPerformed(ActionEvent e) {
         frame = new MainFrame((int) levelselect.getSelectedItem());
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //frame.setDefaultCloseOperation(JFrame.);
         frame.setSize(700, 700);
         frame.setVisible(true);
         }
