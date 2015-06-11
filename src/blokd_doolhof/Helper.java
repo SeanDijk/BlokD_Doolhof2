@@ -97,19 +97,19 @@ public class Helper extends SpelObject{
         }
         
         veldCount[v.coordsY][v.coordsX] = count; 
-        if(v.getBuur("left").isWalkable())
+        if(v.buurLinks!= null && v.buurLinks.isWalkable())
         {
             recursiveSolver(v.getBuur("left"), (count + 1));
         }
-        if(v.getBuur("right").isWalkable())
+        if(v.buurRechts!= null && v.buurRechts.isWalkable())
         {
             recursiveSolver(v.getBuur("right"), (count + 1));
         }
-        if(v.getBuur("up").isWalkable())
+        if(v.buurBoven!= null && v.buurBoven.isWalkable())
         {
             recursiveSolver(v.getBuur("up"), (count + 1));
         }
-        if(v.getBuur("down").isWalkable())
+        if(v.buurOnder!= null && v.buurOnder.isWalkable())
         {
             recursiveSolver(v.getBuur("down"), (count + 1));
         }
