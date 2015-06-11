@@ -30,6 +30,7 @@ public class Helper extends SpelObject{
         this.eindveld = eindveld;
         imagePath = "Img/Helper.png";
     }
+    @Override
     public void paintComponent(Graphics g)
     {
         tekenObject(g, imagePath);

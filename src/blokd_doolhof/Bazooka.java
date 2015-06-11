@@ -25,6 +25,7 @@ public class Bazooka extends SpelObject implements Pickupable{
         
         imagePath = "Img/Bazooka.png";
     }
+    @Override
     public void paintComponent(Graphics g)
     {
         tekenObject(g, imagePath);
