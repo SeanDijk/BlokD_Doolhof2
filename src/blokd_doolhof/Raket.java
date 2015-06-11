@@ -8,10 +8,14 @@ package blokd_doolhof;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.JComponent;
 
 /**
@@ -23,13 +27,35 @@ public class Raket extends JComponent implements Mover{
     Veld huidigVeld;
     String direction;
     boolean disabled = false;
+    String imagePath;
     public Raket(Veld huidigVeld)
     {
        huidigVeld.Raket = this;
        huidigVeld = getHuidigVeld();
        direction = huidigVeld.speler.direction;
-       
        move(direction);
+       imagePath = "Img/Raket.png";
+    }
+    
+    @Override
+    public void paintComponent(Graphics g)
+    {
+        tekenObject(g, imagePath);
+    }
+
+    public void tekenObject(Graphics g, String path )
+    {
+        BufferedImage img = null;
+        try {              
+                img = ImageIO.read(new File(path));            
+                                
+                int middleWidth = (this.getParent().getWidth()/2  - img.getWidth()/2);
+                int middleHeight= (this.getParent().getHeight()/2  - img.getHeight()/2);
+                                
+                g.drawImage(img, middleWidth, middleHeight, null);
+            } 
+        catch (IOException e) {
+            }
     }
     @Override
     public void setHuidigVeld()
@@ -107,13 +133,5 @@ public class Raket extends JComponent implements Mover{
             nieuwVeld.repaint();
         }
         
-    }
-    
-    
-    @Override
-    public void paintComponent(Graphics g)
-    {
-        g.setColor(Color.BLACK);    
-        g.fillOval(0, 0, this.getParent().getWidth(), this.getParent().getHeight());
     }
 }

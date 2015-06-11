@@ -6,7 +6,12 @@
 package blokd_doolhof;
 
 import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+import javax.imageio.ImageIO;
 
 /**
  *
@@ -18,11 +23,32 @@ public class Helper extends SpelObject{
     Veld eindveld;
     int[][] veldCount;
     ArrayList<Veld> solution= new ArrayList<>();
+    String imagePath;
     public Helper(Veld eigenVeld, Veld eindveld)
     {
         v =eigenVeld;
-        kleur = Color.GRAY;
+        //kleur = Color.GRAY;
         this.eindveld = eindveld;
+        imagePath = "Img/Helper.png";
+    }
+    public void paintComponent(Graphics g)
+    {
+        tekenObject(g, imagePath);
+    }
+
+    public void tekenObject(Graphics g, String path )
+    {
+        BufferedImage img = null;
+        try {              
+                img = ImageIO.read(new File(path));            
+                                
+                int middleWidth = (this.getParent().getWidth()/2  - img.getWidth()/2);
+                int middleHeight= (this.getParent().getHeight()/2  - img.getHeight()/2);
+                                
+                g.drawImage(img, middleWidth, middleHeight, null);
+            } 
+        catch (IOException e) {
+            }
     }
     
     @Override

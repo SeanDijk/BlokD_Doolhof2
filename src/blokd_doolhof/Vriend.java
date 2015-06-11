@@ -6,6 +6,11 @@
 package blokd_doolhof;
 
 import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.OK_CANCEL_OPTION;
 import static javax.swing.JOptionPane.PLAIN_MESSAGE;
@@ -16,10 +21,33 @@ import static javax.swing.JOptionPane.PLAIN_MESSAGE;
  */
 public class Vriend extends SpelObject{
     Veld v;
+    String imagePath;
     public Vriend(Veld v)
     {
-        kleur = Color.MAGENTA;
+        //kleur = Color.MAGENTA;
         this.v = v;
+        imagePath = "Img/Vriend.png";
+        
+    }
+    @Override
+    public void paintComponent(Graphics g)
+    {
+        tekenObject(g, imagePath);
+    }
+
+    public void tekenObject(Graphics g, String path )
+    {
+        BufferedImage img = null;
+        try {              
+                img = ImageIO.read(new File(path));            
+                                
+                int middleWidth = (this.getParent().getWidth()/2  - img.getWidth()/2);
+                int middleHeight= (this.getParent().getHeight()/2  - img.getHeight()/2);
+                                
+                g.drawImage(img, middleWidth, middleHeight, null);
+            } 
+        catch (IOException e) {
+            }
     }
     
     @Override
