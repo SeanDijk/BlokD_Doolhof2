@@ -12,8 +12,7 @@ import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
-import static javax.swing.JOptionPane.OK_CANCEL_OPTION;
-import static javax.swing.JOptionPane.PLAIN_MESSAGE;
+import static blokd_doolhof.BlokD_Doolhof.frame;
 
 /**
  *
@@ -55,7 +54,7 @@ public class Vriend extends SpelObject{
         
         System.out.println("Gewonnen!!");
         v.speler.winAnimation(0);
-        JOptionPane.showMessageDialog(BlokD_Doolhof.frame, "Level gehaald!");
-        
+        JOptionPane.showMessageDialog(BlokD_Doolhof.frame, "Level gehaald in " + Speler.aantalStappen + " Stappen!");
+        BlokD_Doolhof.frame.setVisible(false);
     }
 }

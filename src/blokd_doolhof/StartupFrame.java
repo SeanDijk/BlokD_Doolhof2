@@ -50,6 +50,7 @@ public class StartupFrame extends JFrame{
         //frame.setDefaultCloseOperation(JFrame.);
         frame.setSize(700, 700);
         frame.setVisible(true);
+        frame.setAlwaysOnTop(true);
         }
     }; 
     

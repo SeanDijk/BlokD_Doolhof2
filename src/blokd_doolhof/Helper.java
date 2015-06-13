@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import javax.imageio.ImageIO;
 
+
 /**
  *
  * @author Sean
@@ -113,6 +114,7 @@ public class Helper extends SpelObject{
     //Recursieve methode nodig voor het doorlopen van het doolhof
     public void recursiveSolver(Veld v, int count)
     {   
+
         if(v == eindveld)
         {
             System.out.println("This route is " + count + " steps");
@@ -125,20 +127,23 @@ public class Helper extends SpelObject{
         veldCount[v.coordsY][v.coordsX] = count; 
         if(v.buurLinks!= null && v.buurLinks.isWalkable())
         {
-            recursiveSolver(v.getBuur("left"), (count + 1));
+            recursiveSolver(v.buurLinks, (count + 1));
+            
         }
         if(v.buurRechts!= null && v.buurRechts.isWalkable())
         {
-            recursiveSolver(v.getBuur("right"), (count + 1));
+            recursiveSolver(v.buurRechts, (count + 1));
         }
         if(v.buurBoven!= null && v.buurBoven.isWalkable())
         {
-            recursiveSolver(v.getBuur("up"), (count + 1));
+            recursiveSolver(v.buurBoven, (count + 1));
         }
         if(v.buurOnder!= null && v.buurOnder.isWalkable())
         {
-            recursiveSolver(v.getBuur("down"), (count + 1));
+            recursiveSolver(v.buurOnder, (count + 1));
         }
+        v.imagePath = "Img/Path.png";
+        v.repaint();
     }
     private void getSolution(Veld v)
     {
