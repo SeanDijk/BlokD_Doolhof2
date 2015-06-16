@@ -32,7 +32,6 @@ public class Raket extends JComponent implements Mover{
     public Raket(Veld huidigVeld)
     {
        huidigVeld.Raket = this;
-       huidigVeld = getHuidigVeld();
        direction = huidigVeld.speler.direction;
        move(direction);
        imagePath = "Img/Raket.png";
@@ -112,7 +111,6 @@ public class Raket extends JComponent implements Mover{
         
         if(nieuwVeld.isWalkable() == true)
         {
-            
             setHuidigVeld(nieuwVeld);
             huidigVeld.repaint();
             

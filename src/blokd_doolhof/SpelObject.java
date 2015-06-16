@@ -7,6 +7,10 @@ package blokd_doolhof;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 import javax.swing.JComponent;
 
 /**
@@ -17,15 +21,27 @@ public abstract class SpelObject extends JComponent{
     
     Color kleur;
     boolean disabled=false;
-    
+    String imagePath= "";
     
     @Override
     public void paintComponent(Graphics g)
     {
-        g.setColor(kleur);    
-        g.fillOval(0, 0, this.getParent().getWidth(), this.getParent().getHeight());
+        tekenObject(g, imagePath);
     }
-    
+    public void tekenObject(Graphics g, String path )
+    {
+        BufferedImage img = null;
+        try {              
+                img = ImageIO.read(new File(path));            
+                                
+                int middleWidth = (this.getParent().getWidth()/2  - img.getWidth()/2);
+                int middleHeight= (this.getParent().getHeight()/2  - img.getHeight()/2);
+                                
+                g.drawImage(img, middleWidth, middleHeight, null);
+            } 
+        catch (IOException e) {
+            }
+    }
     public void doAction()
     {
         

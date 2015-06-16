@@ -24,8 +24,10 @@ public class Speelveld extends JPanel{
     Veld eindPositie;
     Speler speler = new Speler();
     Vriend vriend;
-    
+        
     int currentLevel = 0;
+    
+    
     
     public Speelveld()
     {
@@ -49,6 +51,7 @@ public class Speelveld extends JPanel{
             loadLevel3();
         }
         Speler.aantalStappen = 0;
+        Speler.keys.clear();
     }
     private void maakPaden(int aantal)
     {
@@ -112,7 +115,7 @@ public class Speelveld extends JPanel{
         eindPositie.spelObject = (vriend = new Vriend(eindPositie));
         velden[3][3].spelObject = new Valsspeler(10);
         velden[4][10].spelObject = new Valsspeler(10);
-        velden[8][8].spelObject = new Bazooka(velden[8][8]);
+        velden[8][8].spelObject = new Bazooka();
         velden[8][12].spelObject = new Helper(velden[8][12], eindPositie);
         
     }
@@ -160,7 +163,7 @@ public class Speelveld extends JPanel{
         eindPositie = velden[18][18];
         eindPositie.spelObject = (vriend = new Vriend(eindPositie));
         velden[11][18].spelObject = new Valsspeler(5);
-        velden[2][1].spelObject = new Bazooka(velden[2][1]);
+        velden[2][1].spelObject = new Bazooka();
         velden[10][8].spelObject = new Helper(velden[10][8], eindPositie);
     }
     public void loadLevel3()
@@ -169,7 +172,8 @@ public class Speelveld extends JPanel{
         setLayout(new GridLayout(20,20));
         maakPaden(400);
         maakMuren(400);
-        
+        SleutelMuur smuur1 = new SleutelMuur(2);
+        SleutelMuur smuur2 = new SleutelMuur(3);
         int i =0;
         int y = 0;   
         
@@ -190,9 +194,9 @@ public class Speelveld extends JPanel{
         Veld[] rij14 ={muren[i++], paden[y++], muren[i++], paden[y++], paden[y++], paden[y++], paden[y++], paden[y++], muren[i++], muren[i++], paden[y++], muren[i++], paden[y++], muren[i++], muren[i++], muren[i++], muren[i++], muren[i++], paden[y++], muren[i++]};
         Veld[] rij15 ={muren[i++], paden[y++], muren[i++], paden[y++], muren[i++], muren[i++], muren[i++], muren[i++], muren[i++], muren[i++], paden[y++], muren[i++], paden[y++], paden[y++], paden[y++], paden[y++], paden[y++], muren[i++], paden[y++], muren[i++]};
         Veld[] rij16 ={muren[i++], paden[y++], muren[i++], paden[y++], muren[i++], muren[i++], paden[y++], paden[y++], paden[y++], paden[y++], paden[y++], muren[i++], muren[i++], paden[y++], muren[i++], muren[i++], muren[i++], muren[i++], paden[y++], muren[i++]};
-        Veld[] rij17 ={muren[i++], paden[y++], muren[i++], paden[y++], muren[i++], muren[i++], paden[y++], muren[i++], muren[i++], muren[i++], paden[y++], paden[y++], muren[i++], paden[y++], muren[i++], paden[y++], paden[y++], muren[i++], paden[y++], muren[i++]};
+        Veld[] rij17 ={muren[i++], paden[y++], muren[i++], paden[y++], muren[i++], muren[i++], paden[y++], muren[i++], muren[i++], muren[i++], paden[y++], paden[y++], muren[i++], paden[y++], muren[i++], paden[y++], paden[y++], muren[i++], smuur2    , muren[i++]};
         Veld[] rij18 ={muren[i++], paden[y++], muren[i++], paden[y++], muren[i++], muren[i++], paden[y++], muren[i++], muren[i++], muren[i++], muren[i++], paden[y++], muren[i++], paden[y++], muren[i++], paden[y++], muren[i++], muren[i++], paden[y++], muren[i++]};
-        Veld[] rij19 ={muren[i++], paden[y++], paden[y++], paden[y++], paden[y++], muren[i++], paden[y++], muren[i++], muren[i++], paden[y++], paden[y++], paden[y++], paden[y++], paden[y++], paden[y++], paden[y++], paden[y++], paden[y++], paden[y++], muren[i++]};
+        Veld[] rij19 ={muren[i++], paden[y++], paden[y++], paden[y++], paden[y++], muren[i++], paden[y++], muren[i++], muren[i++], paden[y++], paden[y++], paden[y++], paden[y++], smuur1    , paden[y++], paden[y++], muren[i++], muren[i++], paden[y++], muren[i++]};
         Veld[] rij20 ={muren[i++], muren[i++], muren[i++], muren[i++], muren[i++], muren[i++], muren[i++], muren[i++], muren[i++], muren[i++], muren[i++], muren[i++], muren[i++], muren[i++], muren[i++], muren[i++], muren[i++], muren[i++], muren[i++], muren[i++]};
         System.out.println("Aantal muren: " + (i) + " Aantal paden: " + (y));
         velden = new Veld[][]{rij1, rij2, rij3, rij4, rij5, rij6, rij7, rij8, rij9, rij10, rij11, rij12, rij13, rij14, rij15, rij16, rij17, rij18, rij19, rij20};
@@ -206,9 +210,17 @@ public class Speelveld extends JPanel{
         speler.huidigveld = startPositie;
         eindPositie = velden[18][18];
         eindPositie.spelObject = (vriend = new Vriend(eindPositie));
+        
+        
         velden[11][18].spelObject = new Valsspeler(5);
-        velden[2][1].spelObject = new Bazooka(velden[2][1]);
+        velden[2][1].spelObject = new Bazooka();
         velden[10][8].spelObject = new Helper(velden[10][8], eindPositie);
+        
+        velden[18][4].spelObject = new Sleutel();
+        velden[8][7].spelObject = new Sleutel();
+        velden[16][16].spelObject = new Sleutel();
+        velden[14][16].spelObject = new Sleutel();
+        velden[12][16].spelObject = new Sleutel();
     }
     public void giveCoords()
     {

@@ -17,57 +17,31 @@ import javax.imageio.ImageIO;
  * @author Sean
  */
 public class Bazooka extends SpelObject implements Pickupable{
-    String imagePath;
-    Veld b;
-    public Bazooka(Veld b)
+       
+    public Bazooka()
     {
-        this.b = b;
-        
         imagePath = "Img/Bazooka.png";
     }
-    @Override
-    public void paintComponent(Graphics g)
-    {
-        tekenObject(g, imagePath);
-    }
-
-    public void tekenObject(Graphics g, String path )
-    {
-        BufferedImage img = null;
-        try {              
-                img = ImageIO.read(new File(path));            
-                                
-                int middleWidth = (this.getParent().getWidth()/2  - img.getWidth()/2);
-                int middleHeight= (this.getParent().getHeight()/2  - img.getHeight()/2);
-                                
-                g.drawImage(img, middleWidth, middleHeight, null);
-            } 
-        catch (IOException e) {
-            }
-    }
+ 
     
     @Override
     public void doAction()
     {
         pickup();
         System.out.println("Bazooka opgepakt");
-        disabled = true;
-        
+        disabled = true;        
     }
 
     @Override
     public void pickup() 
     {
-        b.speler.pickup = this;
-        
+        Speler.pickup = this;        
     }
 
     @Override
     public void doActionpickup(Veld veldraket)
     {
-        
         Raket raket = new Raket(veldraket);
-        
     }
     
 }

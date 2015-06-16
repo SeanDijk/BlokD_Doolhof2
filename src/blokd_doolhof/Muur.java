@@ -18,9 +18,6 @@ public class Muur extends Veld{
     public Muur()
     {
         imagePath = "Img/Wall.png";
-        //Border border = new BevelBorder(1);
-        setBackground(Color.red);
-        //setBorder(border);
         walkable=false;        
     }
 

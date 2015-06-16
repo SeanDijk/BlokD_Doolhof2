@@ -18,9 +18,7 @@ public class Pad extends Veld{
     public Pad()
     {
         imagePath = "Img/Path.png";
-        //Border border = new BevelBorder(1);
         setBackground(Color.blue);
-        //setBorder(border);
         walkable= true;
     }
     

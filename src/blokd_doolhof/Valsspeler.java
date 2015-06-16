@@ -32,20 +32,6 @@ public class Valsspeler extends SpelObject{
         tekenObject(g, imagePath);
     }
 
-    public void tekenObject(Graphics g, String path )
-    {
-        BufferedImage img = null;
-        try {              
-                img = ImageIO.read(new File(path));            
-                                
-                int middleWidth = (this.getParent().getWidth()/2  - img.getWidth()/2);
-                int middleHeight= (this.getParent().getHeight()/2  - img.getHeight()/2);
-                                
-                g.drawImage(img, middleWidth, middleHeight, null);
-            } 
-        catch (IOException e) {
-            }
-    }
     @Override
     public void doAction() //Terugdraaien Stappen
     {

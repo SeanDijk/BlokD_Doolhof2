@@ -6,14 +6,13 @@
 package blokd_doolhof;
 
 import static blokd_doolhof.Speelveld.velden;
-import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
-import java.awt.image.Raster;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Timer;
 import java.util.TimerTask;
 import javax.imageio.ImageIO;
@@ -26,6 +25,7 @@ import javax.swing.JComponent;
 public class Speler extends JComponent implements Mover{
     Veld huidigveld;
     static int aantalStappen=0;
+    static Queue<Object> keys = new LinkedList<>();
     static Pickupable pickup;
     String direction;
     String imagePath;
@@ -35,7 +35,6 @@ public class Speler extends JComponent implements Mover{
     {
         direction = "down";
         imagePath = "Img/Mario_South.png";
-        //addKeyListener(key);
     }
     @Override
     public void paintComponent(Graphics g)
@@ -136,7 +135,7 @@ public class Speler extends JComponent implements Mover{
     
     public void spelObjectAction()
     {
-        if(huidigveld.spelObject != null)
+        if(huidigveld.spelObject != null && huidigveld.spelObject.disabled ==false)
         {
             huidigveld.spelObject.doAction();
         }
@@ -183,41 +182,5 @@ public class Speler extends JComponent implements Mover{
    
 }
     
-   /* 
-    KeyListener key = new KeyListener() {
-
-        @Override
-        public void keyTyped(KeyEvent e) {}
-
-        @Override
-        public void keyPressed(KeyEvent e) {
-            String key = Character.toString(e.getKeyChar());
-            System.out.println(key);
-            if("w".equals(key))
-            {
-                move("up");
-            }
-            if("a".equals(key))
-            {
-                move("left");
-            }
-            if("s".equals(key))
-            {
-                move("down");
-            }
-            if("d".equals(key))
-            {
-                move("right");
-            }
-            if("p".equals(key))
-            {
-                usePickup(huidigveld);
-            }
-        }
-
-        @Override
-        public void keyReleased(KeyEvent e) {}
-    };
-    * 
-    */
+   
 
