@@ -42,9 +42,6 @@ public abstract class SpelObject extends JComponent{
         catch (IOException e) {
             }
     }
-    public void doAction()
-    {
-        
-    }
+    public abstract void doAction();
 
 }
